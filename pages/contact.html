@@ -1,0 +1,157 @@
+<!-- ═══════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════ -->
+<style>
+#page-contact { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+.contact-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+.contact-hero-sub { max-width: 520px; margin: .8rem auto 0; color: var(--muted2); line-height: 1.78; }
+.contact-body {
+  max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+}
+.contact-form-card { padding: 2.5rem; border-radius: 22px; }
+.form-terminal-bar {
+  font-family: var(--mono); font-size: .68rem; color: var(--c1);
+  margin-bottom: 1.6rem; letter-spacing: .07em;
+  display: flex; align-items: center; gap: .4rem;
+}
+.form-terminal-bar::before { content: '>'; color: var(--c2); }
+.form-success {
+  display: none; text-align: center; padding: 2rem;
+  font-family: var(--mono); font-size: .9rem; color: #4ade80;
+}
+.form-success.show { display: block; }
+.contact-info-title {
+  font-family: var(--display); font-size: 1.25rem; font-weight: 900;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem;
+}
+.contact-info-sub { color: var(--muted2); font-size: .9rem; line-height: 1.78; margin-bottom: 1.5rem; }
+.response-card {
+  margin-top: 1.5rem; padding: 1.2rem; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.rc-label { font-family: var(--mono); font-size: .63rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .5rem; }
+
+@media (max-width: 900px) { .contact-body { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .contact-hero { padding: 4rem 1.5rem 2rem; }
+  .contact-body { padding: 0 1.5rem 4rem; }
+}
+</style>
+
+<div class="contact-hero">
+  <div class="label reveal" style="justify-content:center">06 — Contact</div>
+  <h1 class="h2 reveal" style="transition-delay:.05s">Let's <span class="grad">Build Together</span></h1>
+  <p class="contact-hero-sub reveal" style="transition-delay:.1s">
+    Whether you're a recruiter, founder, or fellow developer — I'd love to hear from you.
+    Always open for internship opportunities, collaborations, and great conversations.
+  </p>
+</div>
+
+<div class="contact-body">
+  <!-- FORM -->
+  <div class="contact-form-card card card-glow reveal">
+    <div class="form-terminal-bar">send_message( ) — Let's Connect</div>
+    <div class="form-row">
+      <label>name</label>
+      <input type="text" id="form-name" placeholder="Your full name" autocomplete="name"/>
+    </div>
+    <div class="form-row">
+      <label>email</label>
+      <input type="email" id="form-email" placeholder="your@email.com" autocomplete="email"/>
+    </div>
+    <div class="form-row">
+      <label>subject</label>
+      <input type="text" id="form-subject" placeholder="Internship · Collaboration · Project · Just saying hi"/>
+    </div>
+    <div class="form-row">
+      <label>message</label>
+      <textarea id="form-message" placeholder="Tell me what you're working on, or what opportunity you have in mind..."></textarea>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" id="send-btn" onclick="handleFormSubmit()">
+      Send Message →
+    </button>
+    <div class="form-success" id="form-success">
+      ✅ Message sent! I'll reply within 24 hours.
+    </div>
+  </div>
+
+  <!-- SIDE INFO -->
+  <div class="reveal" style="transition-delay:.12s">
+    <div class="availability-card" style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem">
+      <div class="av-dot" style="margin-top:.3rem;flex-shrink:0"></div>
+      <div>
+        <div class="av-text">Available for Internships</div>
+        <div class="av-sub">Actively seeking SDE Intern / Research roles. Response within 24 hours.</div>
+      </div>
+    </div>
+
+    <div class="contact-info-title">Get in Touch</div>
+    <p class="contact-info-sub">Reach Saksham directly via any of these channels.</p>
+
+    <a href="mailto:kotiasaksham@gmail.com" class="contact-link card">
+      <div class="cl-icon" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.14)">✉</div>
+      <div>
+        <div class="cl-label">Email</div>
+        <div class="cl-value">kotiasaksham@gmail.com</div>
+      </div>
+    </a>
+
+    <a href="tel:+918800409904" class="contact-link card">
+      <div class="cl-icon" style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18)">📞</div>
+      <div>
+        <div class="cl-label">Phone</div>
+        <div class="cl-value">+91 88004 09904</div>
+      </div>
+    </a>
+
+    <a href="https://linkedin.com/in/sakshamkotia" target="_blank" class="contact-link card">
+      <div class="cl-icon" style="background:rgba(0,119,181,.08);border:1px solid rgba(0,119,181,.22)">🔗</div>
+      <div>
+        <div class="cl-label">LinkedIn</div>
+        <div class="cl-value">linkedin.com/in/sakshamkotia</div>
+      </div>
+    </a>
+
+    <a href="https://github.com/sakshamkotia" target="_blank" class="contact-link card">
+      <div class="cl-icon" style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.18)">💻</div>
+      <div>
+        <div class="cl-label">GitHub</div>
+        <div class="cl-value">github.com/sakshamkotia</div>
+      </div>
+    </a>
+
+    <div class="response-card">
+      <div class="rc-label">Response Time</div>
+      <div style="font-size:.9rem;color:var(--muted2)">
+        Usually within <span style="color:var(--c1);font-weight:600">24 hours</span>.
+        Based in <span style="color:var(--white);font-weight:600">Ghaziabad, NCR, India</span>
+        (IST, UTC+5:30).
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">SK.DEV</div>
+  <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Made with ♥ in India · 2025</div>
+  <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)"><span style="color:var(--c1)">●</span> Open to Opportunities</div>
+</div>
+
+<script>
+function handleFormSubmit() {
+  const name = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  if (!name || !email) {
+    alert('Please fill in your name and email.');
+    return;
+  }
+  const btn = document.getElementById('send-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.style.display = 'none';
+    document.getElementById('form-success').classList.add('show');
+  }, 1200);
+}
+</script>

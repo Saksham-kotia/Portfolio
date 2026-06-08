@@ -1,0 +1,162 @@
+<!-- ═══════════════════════════════════
+     PAGE: EXPERIENCE
+     (Positions of Responsibility from resume)
+═══════════════════════════════════ -->
+<style>
+#page-experience { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+.exp-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; }
+.timeline-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem;
+  position: relative;
+}
+.timeline-wrap::before {
+  content: ''; position: absolute;
+  left: calc(3rem + 28px); top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, var(--c1), var(--c2), var(--c3), transparent);
+}
+.tl-item {
+  display: grid; grid-template-columns: 64px 1fr;
+  gap: 2rem; margin-bottom: 2.5rem; align-items: start;
+}
+.tl-dot-col {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: .5rem;
+}
+
+/* R&D interests highlight section */
+.rd-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
+.rd-grid { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+.rd-pill {
+  background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(56,189,248,.05));
+  border: 1px solid rgba(99,102,241,.2); border-radius: 100px;
+  padding: .55rem 1.3rem; font-size: .88rem; color: var(--white);
+  font-weight: 500; transition: all .25s var(--spring);
+}
+.rd-pill:hover { border-color: var(--c1); color: var(--c1); transform: translateY(-2px); }
+
+/* Highlights */
+.highlights-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
+.highlights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+.highlight-card {
+  padding: 1.5rem; border-radius: 16px;
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: all .3s var(--spring);
+}
+.highlight-card:hover { transform: translateY(-4px); }
+.hl-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem; }
+.hl-title { font-weight: 700; font-size: .95rem; }
+.hl-sub   { font-family: var(--mono); font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+.hl-val   { font-family: var(--display); font-size: 1.2rem; font-weight: 900; color: var(--c1); margin-top: .4rem; }
+
+@media (max-width: 700px) {
+  .exp-hero { padding: 4rem 1.5rem 2rem; }
+  .timeline-wrap, .highlights-wrap, .rd-wrap { padding: 0 1.5rem 3rem; }
+  .tl-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+  .timeline-wrap::before { left: calc(1.5rem + 20px); }
+}
+</style>
+
+<div class="exp-hero">
+  <div class="label reveal">04 — Experience &amp; Leadership</div>
+  <h1 class="h2 reveal" style="transition-delay:.05s">Where I've <span class="grad">Contributed</span></h1>
+  <p class="body-text reveal" style="max-width:560px;margin-top:.8rem;transition-delay:.1s">
+    Leadership roles, community contributions, and positions of responsibility that have shaped who I am as a developer and leader.
+  </p>
+</div>
+
+<div class="timeline-wrap">
+
+  <!-- NSS General Secretary -->
+  <div class="tl-item reveal">
+    <div class="tl-dot-col"><div class="tl-dot active"></div></div>
+    <div class="tl-card card card-glow">
+      <div class="tl-role">General Secretary <span class="tl-badge tl-badge-lead">Leadership</span></div>
+      <div class="tl-org">National Service Scheme (NSS) · Jaypee Institute of Information Technology</div>
+      <div class="tl-date">Current Role</div>
+      <ul class="tl-desc">
+        <li>Led 60+ volunteers in planning and executing university-level social initiatives and outreach programs.</li>
+        <li>Oversaw event coordination, communication, and reporting between campus teams and administration.</li>
+        <li>Organised tech literacy drives, community service campaigns, and health awareness events reaching hundreds of participants.</li>
+      </ul>
+      <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+        <span class="tag tag-cyan">Leadership</span>
+        <span class="tag tag-purple">Team Management</span>
+        <span class="tag tag-gray">Event Planning</span>
+        <span class="tag tag-gray">Communication</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jaypee Youth Club -->
+  <div class="tl-item reveal" style="transition-delay:.1s">
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-card card card-glow">
+      <div class="tl-role">Core Committee Head <span class="tl-badge tl-badge-vol">Management</span></div>
+      <div class="tl-org">Jaypee Youth Club (JYC) · Jaypee Institute of Information Technology</div>
+      <div class="tl-date">Current Role</div>
+      <ul class="tl-desc">
+        <li>Spearheaded the college's central event management society responsible for all major cultural and technical events.</li>
+        <li>Managed cross-departmental coordination, logistics, and on-ground execution involving 500+ participants.</li>
+        <li>Led a core team through high-pressure events, demonstrating strong organisational and interpersonal skills.</li>
+      </ul>
+      <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+        <span class="tag tag-purple">Event Management</span>
+        <span class="tag tag-gray">Cross-Dept Coordination</span>
+        <span class="tag tag-gray">Logistics</span>
+        <span class="tag tag-cyan">500+ Participants</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Projects -->
+  <div class="tl-item reveal" style="transition-delay:.15s">
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-card card card-glow">
+      <div class="tl-role">Academic Project Developer <span class="tl-badge tl-badge-work">Academic</span></div>
+      <div class="tl-org">JIIT · Personal Projects</div>
+      <div class="tl-date">2022 – Present</div>
+      <ul class="tl-desc">
+        <li>Built 5+ projects across AI, cybersecurity, computer vision, and web development domains.</li>
+        <li>Applied Python, MERN Stack, OpenCV, and cryptography libraries to solve real-world problems.</li>
+        <li>Demonstrated end-to-end project ownership — from ideation and design to implementation and testing.</li>
+      </ul>
+      <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+        <span class="tag tag-cyan">Python</span>
+        <span class="tag tag-purple">MERN Stack</span>
+        <span class="tag tag-gray">OpenCV</span>
+        <span class="tag tag-gray">AI / ML</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- R&D INTERESTS -->
+<div class="rd-wrap">
+  <div class="divider-glow" style="margin-bottom:3rem"></div>
+  <div class="label reveal">Research &amp; Development Interests</div>
+  <div class="rd-grid stagger">
+    <div class="rd-pill">🤖 AI-based Automation</div>
+    <div class="rd-pill">📅 Smart Scheduling Systems</div>
+    <div class="rd-pill">📈 Predictive Modeling</div>
+    <div class="rd-pill">🔐 Cybersecurity</div>
+    <div class="rd-pill">🖱️ Human–Computer Interaction</div>
+  </div>
+</div>
+
+<!-- IMPACT NUMBERS -->
+<div class="highlights-wrap">
+  <div class="label reveal">Impact Numbers</div>
+  <div class="highlights-grid stagger">
+    <div class="card highlight-card"><div class="hl-icon">🧑‍🤝‍🧑</div><div><div class="hl-title">Volunteers Led</div><div class="hl-sub">NSS · JIIT</div><div class="hl-val">60+</div></div></div>
+    <div class="card highlight-card"><div class="hl-icon">🎉</div><div><div class="hl-title">Event Participants</div><div class="hl-sub">JYC Major Events</div><div class="hl-val">500+</div></div></div>
+    <div class="card highlight-card"><div class="hl-icon">🚀</div><div><div class="hl-title">Projects Built</div><div class="hl-sub">AI · Web · CV · Security</div><div class="hl-val">5+</div></div></div>
+    <div class="card highlight-card"><div class="hl-icon">⌨️</div><div><div class="hl-title">Typing Speed</div><div class="hl-sub">with 98% accuracy</div><div class="hl-val">55 WPM</div></div></div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">SK.DEV</div>
+  <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Leading · Building · Growing</div>
+  <button class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem" onclick="navigate('contact')">Work with me →</button>
+</div>

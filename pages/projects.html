@@ -1,0 +1,208 @@
+<!-- ═══════════════════════════════════
+     PAGE: PROJECTS
+     (5 real projects from resume + "more coming" card)
+═══════════════════════════════════ -->
+<style>
+#page-projects { background: var(--bg); }
+.projects-hero { padding: 5rem 3rem 3rem; max-width: 1200px; margin: 0 auto; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem; padding: 0 3rem 3rem; max-width: 1200px; margin: 0 auto;
+}
+.project-filter { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* Large number watermark */
+.proj-num {
+  position: absolute; top: 1.2rem; right: 1.4rem;
+  font-family: var(--display); font-size: 3.5rem; font-weight: 900;
+  color: rgba(255,255,255,.03); letter-spacing: -.05em;
+  line-height: 1; pointer-events: none; user-select: none;
+  transition: color .3s;
+}
+.project-card:hover .proj-num { color: rgba(99,102,241,.06); }
+
+/* "More Coming" placeholder card */
+.proj-coming {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 280px; border: 1px dashed rgba(99,102,241,.25);
+  border-radius: 20px; text-align: center; padding: 2rem; gap: 1rem;
+  background: linear-gradient(135deg, rgba(99,102,241,.03), rgba(56,189,248,.02));
+  cursor: default; transition: all .3s;
+}
+.proj-coming:hover { border-color: rgba(99,102,241,.5); background: rgba(99,102,241,.05); }
+.proj-coming-icon { font-size: 2.5rem; opacity: .6; }
+.proj-coming-title { font-family: var(--display); font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted2); }
+.proj-coming-sub   { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .06em; }
+
+@media (max-width: 900px) { .project-card.featured { grid-column: span 1; } }
+@media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; padding: 0 1.5rem 3rem; } }
+</style>
+
+<div class="projects-hero">
+  <div class="label reveal">03 — Projects</div>
+  <h1 class="h2 reveal" style="transition-delay:.05s">Things I've <span class="grad">Built</span></h1>
+  <p class="body-text reveal" style="max-width:580px;margin-top:.8rem;transition-delay:.1s">
+    From AI-powered speech systems to cybersecurity tools and computer vision apps — each project is a story of learning, building, and shipping.
+    <span style="color:var(--c1)">More projects coming soon.</span>
+  </p>
+  <div class="project-filter stagger" style="margin-top:1.6rem">
+    <button class="filter-btn active" data-filter="all"><span>All</span></button>
+    <button class="filter-btn" data-filter="ai"><span>AI / ML</span></button>
+    <button class="filter-btn" data-filter="web"><span>Web Dev</span></button>
+    <button class="filter-btn" data-filter="cv"><span>Computer Vision</span></button>
+    <button class="filter-btn" data-filter="security"><span>Cybersecurity</span></button>
+  </div>
+</div>
+
+<div class="projects-grid">
+
+  <!-- PROJECT 1: TalkBridge — FEATURED -->
+  <div class="project-card card featured reveal" style="position:relative" data-cat="ai">
+    <div class="proj-num">01</div>
+    <div class="proj-top">
+      <div class="proj-icon">🎤</div>
+      <div class="proj-meta">
+        <div class="proj-year">AI · Speech</div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">GH</a>
+          <a href="#" class="proj-link">↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="proj-title">TalkBridge</div>
+    <div class="proj-desc">
+      A smart real-time speech translation system that bridges language barriers. Utilises Python's speech recognition,
+      translation, and text-to-speech APIs to enable seamless cross-language communication. Designed with accessibility
+      in mind for multilingual environments.
+    </div>
+    <div class="proj-stack">
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-purple">Speech Recognition</span>
+      <span class="tag tag-indigo">Google TTS</span>
+      <span class="tag tag-gray">NLP</span>
+      <span class="tag tag-gray">Real-time API</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: Virtual Try-On — FEATURED -->
+  <div class="project-card card featured reveal" style="position:relative;transition-delay:.05s" data-cat="cv">
+    <div class="proj-num">02</div>
+    <div class="proj-top">
+      <div class="proj-icon">👓</div>
+      <div class="proj-meta">
+        <div class="proj-year">CV · Python</div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">GH</a>
+          <a href="#" class="proj-link">↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="proj-title">Virtual Try-On System</div>
+    <div class="proj-desc">
+      An AI-based virtual eyewear try-on system using facial landmark detection with OpenCV and MediaPipe.
+      Implements real-time overlay and resizing of virtual frames on detected faces, with accurate landmark
+      mapping and an intuitive GUI for a seamless user experience.
+    </div>
+    <div class="proj-stack">
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-purple">OpenCV</span>
+      <span class="tag tag-indigo">MediaPipe</span>
+      <span class="tag tag-gray">Facial Landmarks</span>
+      <span class="tag tag-gray">GUI</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: Kitchen Diary -->
+  <div class="project-card card reveal" style="position:relative;transition-delay:.1s" data-cat="web">
+    <div class="proj-num">03</div>
+    <div class="proj-top">
+      <div class="proj-icon">🍳</div>
+      <div class="proj-meta">
+        <div class="proj-year">Web · MERN</div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">GH</a>
+          <a href="#" class="proj-link">↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="proj-title">Kitchen Diary</div>
+    <div class="proj-desc">
+      A recipe management web app where users can view, add, and share original dishes. Features database integration
+      for dynamic storage and categorisation of user-generated recipes, with a clean UI and responsive design.
+    </div>
+    <div class="proj-stack">
+      <span class="tag tag-cyan">React</span>
+      <span class="tag tag-purple">Node.js</span>
+      <span class="tag tag-indigo">Express</span>
+      <span class="tag tag-gray">MongoDB</span>
+      <span class="tag tag-gray">SQL</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: CipherChat -->
+  <div class="project-card card reveal" style="position:relative;transition-delay:.15s" data-cat="security">
+    <div class="proj-num">04</div>
+    <div class="proj-top">
+      <div class="proj-icon">🔐</div>
+      <div class="proj-meta">
+        <div class="proj-year">Security · Python</div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">GH</a>
+        </div>
+      </div>
+    </div>
+    <div class="proj-title">CipherChat</div>
+    <div class="proj-desc">
+      A secure chat tool encrypting both text and images using AES and RSA algorithms. Integrates steganography
+      for hidden data transfer, ensuring confidentiality. Built with an intuitive interface for smooth
+      encryption/decryption workflows.
+    </div>
+    <div class="proj-stack">
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-purple">AES / RSA</span>
+      <span class="tag tag-indigo">Steganography</span>
+      <span class="tag tag-pink">Cryptography</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 5: Maritime Scheduling -->
+  <div class="project-card card reveal" style="position:relative;transition-delay:.2s" data-cat="ai">
+    <div class="proj-num">05</div>
+    <div class="proj-top">
+      <div class="proj-icon">🚢</div>
+      <div class="proj-meta">
+        <div class="proj-year">AI / Optimisation</div>
+        <div class="proj-links">
+          <a href="#" class="proj-link">GH</a>
+        </div>
+      </div>
+    </div>
+    <div class="proj-title">Maritime Docking &amp; Resource Scheduler</div>
+    <div class="proj-desc">
+      A scheduling solution optimising ship docking and port resource allocation using priority algorithms.
+      Implements efficient time-slot management, system flowcharts, and data models for real-time port operations.
+    </div>
+    <div class="proj-stack">
+      <span class="tag tag-cyan">Python</span>
+      <span class="tag tag-purple">Algorithms</span>
+      <span class="tag tag-indigo">Optimisation</span>
+      <span class="tag tag-gray">Data Modelling</span>
+    </div>
+  </div>
+
+  <!-- COMING SOON placeholder -->
+  <div class="proj-coming reveal" style="transition-delay:.25s">
+    <div class="proj-coming-icon">🛠️</div>
+    <div class="proj-coming-title">More Projects Coming</div>
+    <div class="proj-coming-sub">Currently building something awesome…<br>Check back soon or visit GitHub.</div>
+    <a href="https://github.com/sakshamkotia" target="_blank" class="btn btn-ghost" style="font-size:.72rem;padding:.5rem 1.1rem;margin-top:.5rem">View GitHub ↗</a>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">SK.DEV</div>
+  <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">5 projects · More on the way</div>
+  <a href="https://github.com/sakshamkotia" target="_blank" class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem">View GitHub ↗</a>
+</div>

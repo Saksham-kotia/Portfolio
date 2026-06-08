@@ -1,0 +1,155 @@
+<!-- ═══════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════ -->
+<style>
+#page-home { background: var(--bg); }
+.hero-wrap {
+  min-height: calc(100vh - 70px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 4rem 2rem 6rem;
+  position: relative;
+}
+.hero-badge-wrap    { animation: fadeInDown .8s var(--ease) .2s both; }
+.hero-name-line1 {
+  font-family: var(--display); font-size: clamp(.9rem,2.5vw,1.3rem);
+  font-weight: 400; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--muted2); animation: fadeInDown .8s var(--ease) .3s both; display: block;
+}
+.hero-name-main  { display: block; animation: fadeInUp .9s var(--ease) .4s both; }
+.hero-role-bar {
+  font-family: var(--mono); font-size: clamp(.85rem,2vw,1.1rem);
+  color: var(--muted2); margin: .7rem 0 1.6rem;
+  animation: fadeInUp .8s var(--ease) .5s both; min-height: 1.8em;
+}
+#type-text    { color: var(--c1); }
+.type-cursor  { color: var(--c1); animation: blink 1s step-end infinite; }
+.hero-tagline {
+  max-width: 600px; margin: 0 auto;
+  color: var(--muted2); line-height: 1.8; font-size: 1.05rem;
+  animation: fadeInUp .8s var(--ease) .6s both;
+}
+.hero-actions {
+  display: flex; gap: 1rem; justify-content: center;
+  flex-wrap: wrap; margin-top: 2.5rem;
+  animation: fadeInUp .8s var(--ease) .7s both;
+}
+.hero-socials {
+  display: flex; gap: .8rem; justify-content: center;
+  margin-top: 2rem; animation: fadeInUp .8s var(--ease) .8s both;
+}
+.hero-stats {
+  display: flex; gap: 1.2rem; justify-content: center;
+  flex-wrap: wrap; margin-top: 3rem;
+  animation: fadeInUp .8s var(--ease) .9s both;
+}
+.hero-underline {
+  height: 3px; width: 120px; margin: .6rem auto 0;
+  background: linear-gradient(90deg, var(--c2), var(--c1), var(--c3));
+  border-radius: 2px; animation: fadeIn 1s var(--ease) .5s both;
+  box-shadow: 0 0 18px var(--glow1);
+}
+.hero-scan-line {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,.15), transparent);
+  animation: scan 8s linear infinite; pointer-events: none; z-index: 0;
+}
+</style>
+
+<div class="hero-wrap has-avatar">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+  <div class="hero-orb orb4"></div>
+  <div class="hero-scan-line"></div>
+
+  <!-- LEFT: hero content -->
+  <div class="hero-content">
+  <div class="hero-badge-wrap">
+    <div class="badge">
+      <span class="badge-dot"></span>Open to Internships &amp; Opportunities
+    </div>
+  </div>
+
+  <div style="margin-top:1.8rem; position:relative">
+    <span class="hero-name-line1">Hello, I am</span>
+    <div class="h1 grad hero-name-main">Saksham Kotia</div>
+    <div class="hero-underline"></div>
+  </div>
+
+  <div class="hero-role-bar">
+    <span style="color:var(--muted)">$ </span>
+    <span id="type-text"></span><span class="type-cursor">▌</span>
+  </div>
+
+  <p class="hero-tagline">
+    Impact and Purpose Driven — B.Tech CSE student at JIIT crafting robust systems,
+    intelligent AI solutions, and beautiful digital experiences.
+    <span style="color:var(--muted)">// Ghaziabad, NCR, India</span>
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="navigate('projects')">View Projects →</button>
+    <button class="btn btn-outline" onclick="navigate('about')">About Me</button>
+    <a class="btn btn-ghost" href="mailto:kotiasaksham@gmail.com">Contact Me ✉</a>
+  </div>
+
+  <div class="hero-socials">
+    <a class="social-btn" href="https://linkedin.com/in/sakshamkotia" target="_blank" title="LinkedIn"><span>LI</span></a>
+    <a class="social-btn" href="https://github.com/sakshamkotia" target="_blank" title="GitHub"><span>GH</span></a>
+    <a class="social-btn" href="mailto:kotiasaksham@gmail.com" title="Email"><span>✉</span></a>
+    <a class="social-btn" href="tel:+918800409904" title="Phone"><span>📞</span></a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="5">0+</div>
+      <div class="hero-stat-lbl">Projects Built</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="60">0+</div>
+      <div class="hero-stat-lbl">Volunteers Led</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="500">0+</div>
+      <div class="hero-stat-lbl">Event Participants</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="55">0</div>
+      <div class="hero-stat-lbl">WPM Typing Speed</div>
+    </div>
+  </div>
+
+  <!-- Terminal -->
+  <div class="terminal reveal" style="max-width:520px;margin:3.5rem auto 0;animation:fadeInUp .8s var(--ease) 1s both">
+    <div class="terminal-bar">
+      <div class="t-dot t-dot-r"></div>
+      <div class="t-dot t-dot-y"></div>
+      <div class="t-dot t-dot-g"></div>
+      <span class="terminal-title">saksham@jiit:~$ portfolio.sh</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="t-prompt">~$</span> <span class="t-cmd">whoami</span></div>
+      <div class="t-out">Saksham Kotia — Full Stack Dev &amp; AI Enthusiast @ JIIT</div>
+      <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat status.json</span></div>
+      <div class="t-out">{ <span class="t-success">"available"</span>: true, <span class="t-warn">"seeking"</span>: "SDE Intern / Research Role" }</div>
+      <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat skills.txt | head -5</span></div>
+      <div class="t-out"><span class="t-success">→</span> Python (Advanced), C++, JavaScript, Java, PHP</div>
+      <div class="t-out"><span class="t-success">→</span> MERN Stack, OpenCV, TensorFlow, Flask</div>
+      <div class="t-out"><span class="t-success">→</span> MySQL, PostgreSQL, MongoDB, SQLite</div>
+      <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cursor-line t-cmd"></span></div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="margin-top:3.5rem">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+  </div><!-- /hero-content -->
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">SK.DEV</div>
+  <div class="footer-center">Built with ♥ &amp; ☕ · B.Tech CSE · JIIT</div>
+  <div class="footer-right">Python · MERN · <span>AI/ML</span></div>
+</div>

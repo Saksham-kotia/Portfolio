@@ -1,0 +1,202 @@
+/* ══════════════════════════════════════════
+   PORTFOLIO — ANIMATIONS & MOTION
+   ══════════════════════════════════════════ */
+
+/* ===== KEYFRAMES ===== */
+@keyframes fadeInDown  { from { opacity:0; transform:translateY(-24px) } to { opacity:1; transform:none } }
+@keyframes fadeInUp    { from { opacity:0; transform:translateY(24px)  } to { opacity:1; transform:none } }
+@keyframes fadeIn      { from { opacity:0 } to { opacity:1 } }
+@keyframes blink       { 0%,100% { opacity:1 } 50% { opacity:0 } }
+@keyframes orbFloat    { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-38px) } }
+@keyframes orbPulse    { 0%,100% { opacity:.09 } 50% { opacity:.16 } }
+@keyframes scrollDown  {
+  0%   { transform:scaleY(0); transform-origin:top }
+  60%  { transform:scaleY(1); transform-origin:top }
+  100% { transform:scaleY(0); transform-origin:bottom }
+}
+@keyframes pulseDot    { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.35; transform:scale(.55) } }
+@keyframes rippleDot   { 0% { transform:scale(1); opacity:.7 } 100% { transform:scale(3.2); opacity:0 } }
+@keyframes floatCard   { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-12px) } }
+@keyframes glitch {
+  0%,90%,100% { clip-path:inset(0 0 100% 0); transform:none }
+  91% { clip-path:inset(10% 0 60% 0); transform:translateX(-4px) skewX(2deg) }
+  93% { clip-path:inset(50% 0 20% 0); transform:translateX(4px) skewX(-1deg) }
+  95% { clip-path:inset(70% 0 5% 0);  transform:translateX(-2px) }
+  97% { clip-path:inset(0 0 0 0);     transform:none }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center }
+  100% { background-position:  200% center }
+}
+@keyframes scan {
+  0%   { transform:translateY(-100%) }
+  100% { transform:translateY(100vh) }
+}
+@keyframes rotateOrb {
+  0%   { transform:rotate(0deg)   }
+  100% { transform:rotate(360deg) }
+}
+@keyframes borderGlow {
+  0%,100% { box-shadow: 0 0 0 1px rgba(56,189,248,.18), 0 0 24px rgba(56,189,248,.1) }
+  50%      { box-shadow: 0 0 0 1px rgba(99,102,241,.35),  0 0 48px rgba(99,102,241,.18) }
+}
+@keyframes countUp {
+  from { opacity:0; transform:translateY(14px) }
+  to   { opacity:1; transform:none }
+}
+@keyframes slideInLeft  { from { opacity:0; transform:translateX(-44px) } to { opacity:1; transform:none } }
+@keyframes slideInRight { from { opacity:0; transform:translateX(44px)  } to { opacity:1; transform:none } }
+@keyframes pulse3D {
+  0%,100% { box-shadow: 0 0 0 0 rgba(56,189,248,.45) }
+  70%      { box-shadow: 0 0 0 14px rgba(56,189,248,0) }
+}
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50% }
+  50%      { background-position: 100% 50% }
+}
+@keyframes typewriterCursor {
+  0%,100% { opacity: 1 } 50% { opacity: 0 }
+}
+@keyframes accentLineGrow {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.on { opacity: 1; transform: none; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal-left.on { opacity: 1; transform: none; }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal-right.on { opacity: 1; transform: none; }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.9) translateY(20px);
+  transition: opacity .75s var(--ease), transform .75s var(--spring);
+}
+.reveal-scale.on { opacity: 1; transform: scale(1) translateY(0); }
+
+.reveal-blur {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  transition: opacity .75s var(--ease), transform .75s var(--ease), filter .75s var(--ease);
+}
+.reveal-blur.on { opacity: 1; transform: none; filter: blur(0); }
+
+/* ===== STAGGER ===== */
+.stagger > * { opacity: 0; transform: translateY(30px); }
+.stagger.on > * { opacity: 1; transform: none; }
+.stagger.on > *:nth-child(1)  { transition: all .6s var(--ease) .00s; }
+.stagger.on > *:nth-child(2)  { transition: all .6s var(--ease) .06s; }
+.stagger.on > *:nth-child(3)  { transition: all .6s var(--ease) .12s; }
+.stagger.on > *:nth-child(4)  { transition: all .6s var(--ease) .18s; }
+.stagger.on > *:nth-child(5)  { transition: all .6s var(--ease) .24s; }
+.stagger.on > *:nth-child(6)  { transition: all .6s var(--ease) .30s; }
+.stagger.on > *:nth-child(7)  { transition: all .6s var(--ease) .36s; }
+.stagger.on > *:nth-child(8)  { transition: all .6s var(--ease) .42s; }
+.stagger.on > *:nth-child(9)  { transition: all .6s var(--ease) .48s; }
+.stagger.on > *:nth-child(10) { transition: all .6s var(--ease) .54s; }
+.stagger.on > *:nth-child(11) { transition: all .6s var(--ease) .60s; }
+.stagger.on > *:nth-child(12) { transition: all .6s var(--ease) .66s; }
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-hint {
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .2em;
+  color: var(--muted); text-transform: uppercase;
+  animation: fadeInUp 1s var(--ease) 1.8s both;
+}
+.scroll-hint-line {
+  width: 1px; height: 52px;
+  background: linear-gradient(to bottom, var(--c1), transparent);
+  animation: scrollDown 2.4s ease-in-out infinite;
+}
+
+/* ===== BADGE ===== */
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(56,189,248,.06); border: 1px solid rgba(56,189,248,.2);
+  color: var(--c1); padding: .42rem 1.2rem; border-radius: 100px;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
+  animation: borderGlow 3.5s ease-in-out infinite;
+  position: relative; overflow: hidden;
+}
+.badge::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,.08), transparent);
+  animation: shimmer 4s linear infinite;
+}
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--c1); animation: pulseDot 1.8s ease-in-out infinite;
+  box-shadow: 0 0 6px var(--c1);
+}
+
+/* ===== GLITCH TEXT ===== */
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+  content: attr(data-text); position: absolute; inset: 0;
+  color: var(--c1);
+}
+.glitch::before { animation: glitch 5s infinite 1s; color: var(--c3); }
+.glitch::after  { animation: glitch 5s infinite 1.5s; color: var(--c4); mix-blend-mode: screen; }
+
+/* ===== SHIMMER GRADIENT ===== */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,.09) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3.5s linear infinite;
+}
+
+/* ===== FLOATING ORBS ===== */
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); pointer-events: none; will-change: transform;
+}
+.orb1 {
+  width: 800px; height: 800px;
+  background: radial-gradient(var(--c2), transparent 68%);
+  opacity: .11; top: -200px; left: 50%;
+  transform: translateX(-50%);
+  animation: orbFloat 10s ease-in-out infinite, orbPulse 10s ease-in-out infinite;
+}
+.orb2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(var(--c3), transparent 68%);
+  opacity: .09; bottom: -60px; right: -140px;
+  animation: orbFloat 14s ease-in-out infinite reverse, orbPulse 14s ease-in-out infinite;
+}
+.orb3 {
+  width: 360px; height: 360px;
+  background: radial-gradient(var(--c1), transparent 68%);
+  opacity: .08; bottom: 80px; left: -80px;
+  animation: orbFloat 12s ease-in-out infinite 2.5s, orbPulse 12s ease-in-out infinite;
+}
+.orb4 {
+  width: 240px; height: 240px;
+  background: radial-gradient(var(--c4), transparent 68%);
+  opacity: .06; top: 35%; right: 8%;
+  animation: orbFloat 8s ease-in-out infinite 1s;
+}

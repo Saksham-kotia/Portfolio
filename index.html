@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Saksham Kotia — CS Portfolio</title>
+<meta name="description" content="Saksham Kotia | B.Tech CSE @ JIIT | Full Stack Developer | AI/ML | Open to Internships"/>
+<meta name="keywords" content="Saksham Kotia, portfolio, full stack developer, MERN stack, python, ai, machine learning, JIIT, internship, Ghaziabad"/>
+<meta property="og:title" content="Saksham Kotia — CS Portfolio"/>
+<meta property="og:description" content="B.Tech CSE student at JIIT crafting robust systems, beautiful interfaces, and intelligent digital experiences."/>
+<meta property="og:type" content="website"/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@200;300;400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/style.css?v=1.3"/>
+<link rel="stylesheet" href="css/animations.css?v=1.3"/>
+<link rel="stylesheet" href="css/components.css?v=1.3"/>
+<link rel="stylesheet" href="css/avatar.css?v=1.3"/>
+
+<style>
+#page-home       { background: var(--bg); }
+#page-about      { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+#page-projects   { background: var(--bg); }
+#page-experience { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+#page-skills     { background: var(--bg); }
+#page-contact    { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+
+@media (max-width: 950px) {
+  .about-hero, .projects-hero, .exp-hero, .skills-hero, .contact-hero {
+    padding-left: 5.5rem !important;
+  }
+  .contact-hero {
+    text-align: left !important;
+  }
+  .contact-hero-sub {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 600px) {
+  .about-hero, .projects-hero, .exp-hero, .skills-hero, .contact-hero {
+    padding-left: 4.8rem !important;
+  }
+}
+</style>
+
+<!-- GSAP for smooth animations -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════ CUSTOM CURSOR ═══════════ -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="cur-dot"></div>
+
+<!-- ═══════════ 3D AVATAR ═══════════ -->
+<div id="avatar-container" class="mode-hero"></div>
+<div id="avatar-corner-label">SK · DEVELOPER</div>
+
+<!-- ═══════════ BACKGROUND ═══════════ -->
+<canvas id="bg-canvas"></canvas>
+<div class="noise"></div>
+<div class="grid"></div>
+
+<!-- ═══════════ PAGE TRANSITION ═══════════ -->
+<div id="trans-overlay">
+  <div id="trans-wipe"></div>
+  <div id="trans-bar"></div>
+</div>
+<div id="scroll-progress"></div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="nav">
+  <div class="nav-logo" onclick="navigate('home')">SK.DEV</div>
+
+  <div class="nav-links">
+    <span class="nav-link active" data-page="home"       onclick="navigate('home')">Home</span>
+    <span class="nav-link"        data-page="about"      onclick="navigate('about')">About</span>
+    <span class="nav-link"        data-page="projects"   onclick="navigate('projects')">Projects</span>
+    <span class="nav-link"        data-page="experience" onclick="navigate('experience')">Experience</span>
+    <span class="nav-link"        data-page="skills"     onclick="navigate('skills')">Skills</span>
+    <span class="nav-link"        data-page="contact"    onclick="navigate('contact')">Contact</span>
+  </div>
+
+  <button class="nav-cta" onclick="navigate('contact')">Hire Me ↗</button>
+
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════ MOBILE NAV ═══════════ -->
+<div class="mobile-nav" id="mobile-nav">
+  <span class="mobile-nav-link" onclick="navigate('home');toggleMobileNav()">Home</span>
+  <span class="mobile-nav-link" onclick="navigate('about');toggleMobileNav()">About</span>
+  <span class="mobile-nav-link" onclick="navigate('projects');toggleMobileNav()">Projects</span>
+  <span class="mobile-nav-link" onclick="navigate('experience');toggleMobileNav()">Experience</span>
+  <span class="mobile-nav-link" onclick="navigate('skills');toggleMobileNav()">Skills</span>
+  <span class="mobile-nav-link" onclick="navigate('contact');toggleMobileNav()">Contact</span>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div id="app">
+  <div class="page active" id="page-home">
+    <!-- ═══════════════════════════════════
+         PAGE: HOME
+    ═══════════════════════════════════ -->
+    <style>
+    #page-home { background: var(--bg); }
+    .hero-wrap {
+      min-height: calc(100vh - 70px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 2rem 6rem;
+      position: relative;
+    }
+    /* Cinematic depth radial */
+    .hero-wrap::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 75% 60% at 50% 40%,
+        rgba(99,102,241,.08) 0%, transparent 70%);
+    }
+    .hero-badge-wrap    { animation: fadeInDown .8s var(--ease) .2s both; }
+    .hero-name-line1 {
+      font-family: var(--display); font-size: clamp(.9rem,2.5vw,1.3rem);
+      font-weight: 400; letter-spacing: .36em; text-transform: uppercase;
+      color: var(--muted2); animation: fadeInDown .8s var(--ease) .3s both; display: block;
+      margin-bottom: .5rem;
+    }
+    .hero-name-main  { display: block; animation: fadeInUp .9s var(--ease) .4s both; }
+    .hero-role-bar {
+      font-family: var(--mono); font-size: clamp(.88rem,2vw,1.15rem);
+      color: var(--muted2); margin: .9rem 0 1.2rem;
+      animation: fadeInUp .8s var(--ease) .5s both; min-height: 1.9em;
+    }
+    #type-text    { color: var(--c1); }
+    .type-cursor  { color: var(--c1); animation: blink 1.1s step-end infinite; }
+    .hero-tagline {
+      max-width: 620px; margin: 0 auto;
+      color: var(--muted2); line-height: 1.85; font-size: 1.05rem;
+      animation: fadeInUp .8s var(--ease) .6s both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-top: 2.5rem;
+      animation: fadeInUp .8s var(--ease) .7s both;
+    }
+    .hero-socials {
+      display: flex; gap: .75rem; justify-content: center;
+      margin-top: 2rem; animation: fadeInUp .8s var(--ease) .8s both;
+    }
+    .hero-stats {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-top: 3rem;
+      animation: fadeInUp .8s var(--ease) .9s both;
+    }
+    .hero-underline {
+      height: 2px; width: 100px; margin: .75rem auto 0;
+      background: linear-gradient(90deg, transparent, var(--c2), var(--c1), var(--c3), transparent);
+      border-radius: 2px; animation: accentLineGrow 1s var(--ease) .6s both;
+      box-shadow: 0 0 20px var(--glow1), 0 0 8px var(--glow2);
+    }
+    .hero-scan-line {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56,189,248,.12), rgba(99,102,241,.08), transparent);
+      animation: scan 10s linear infinite; pointer-events: none; z-index: 0;
+    }
+    .hero-divider {
+      width: 1px; height: 40px; background: linear-gradient(to bottom, var(--c1), transparent);
+      margin: 2rem auto 0; opacity: .4;
+      animation: fadeIn 1s var(--ease) 1.1s both;
+    }
+    .hero-terminal-wrap { animation: fadeInUp .9s var(--ease) 1s both; }
+    </style>
+
+    <div class="hero-wrap has-avatar">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+      <div class="hero-orb orb4"></div>
+      <div class="hero-scan-line"></div>
+
+      <!-- LEFT: hero content -->
+      <div class="hero-content">
+      <div class="hero-badge-wrap">
+        <div class="badge">
+          <span class="badge-dot"></span>Open to Internships &amp; Opportunities
+        </div>
+      </div>
+
+      <div style="margin-top:1rem; position:relative">
+        <span class="hero-name-line1">Hello, I am</span>
+        <div class="h1 grad hero-name-main">Saksham Kotia</div>
+        <div class="hero-underline"></div>
+      </div>
+
+      <div class="hero-role-bar">
+        <span style="color:var(--muted)">$ </span>
+        <span id="type-text"></span><span class="type-cursor">▌</span>
+      </div>
+
+      <p class="hero-tagline">
+        Impact and Purpose Driven — B.Tech CSE student at JIIT crafting robust systems,
+        intelligent AI solutions, and beautiful digital experiences.
+        <span style="color:var(--muted)">// Ghaziabad, NCR, India</span>
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="navigate('projects')">View Projects →</button>
+        <button class="btn btn-outline" onclick="navigate('about')">About Me</button>
+        <a class="btn btn-ghost" href="mailto:kotiasaksham@gmail.com">Contact Me ✉</a>
+      </div>
+
+      <div class="hero-socials">
+        <a class="social-btn" href="https://linkedin.com/in/sakshamkotia" target="_blank" title="LinkedIn"><span>in</span></a>
+        <a class="social-btn" href="https://github.com/sakshamkotia" target="_blank" title="GitHub"><span>⌥</span></a>
+        <a class="social-btn" href="mailto:kotiasaksham@gmail.com" title="Email"><span>✉</span></a>
+        <a class="social-btn" href="tel:+918800409904" title="Phone"><span>✆</span></a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="5">0+</div>
+          <div class="hero-stat-lbl">Projects Built</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="60">0+</div>
+          <div class="hero-stat-lbl">Volunteers Led</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="500">0+</div>
+          <div class="hero-stat-lbl">Event Participants</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="55">0</div>
+          <div class="hero-stat-lbl">WPM Typing Speed</div>
+        </div>
+      </div>
+
+      <div class="hero-divider"></div>
+
+      <!-- Terminal -->
+      <div class="hero-terminal-wrap" style="max-width:520px;margin:2.5rem auto 0">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="t-dot t-dot-r"></div>
+            <div class="t-dot t-dot-y"></div>
+            <div class="t-dot t-dot-g"></div>
+            <span class="terminal-title">saksham@jiit:~$ portfolio.sh</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-prompt">~$</span> <span class="t-cmd">whoami</span></div>
+            <div class="t-out">Saksham Kotia — Full Stack Dev &amp; AI Enthusiast @ JIIT</div>
+            <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat status.json</span></div>
+            <div class="t-out">{ <span class="t-success">"available"</span>: true, <span class="t-warn">"seeking"</span>: "SDE Intern / Research Role" }</div>
+            <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cmd">cat skills.txt | head -5</span></div>
+            <div class="t-out"><span class="t-success">→</span> Python (Advanced), C++, JavaScript, Java, PHP</div>
+            <div class="t-out"><span class="t-success">→</span> MERN Stack, OpenCV, TensorFlow, Flask</div>
+            <div class="t-out"><span class="t-success">→</span> MySQL, PostgreSQL, MongoDB, SQLite</div>
+            <div style="margin-top:.4rem"><span class="t-prompt">~$</span> <span class="t-cursor-line t-cmd"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" style="margin-top:3rem">
+        <div class="scroll-hint-line"></div>
+        <span>Scroll</span>
+      </div>
+      </div><!-- /hero-content -->
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div class="footer-center">Built with ♥ &amp; ☕ · B.Tech CSE · JIIT</div>
+      <div class="footer-right">Python · MERN · <span>AI/ML</span></div>
+    </div>
+  </div>
+  <div class="page"        id="page-about">
+    <!-- ═══════════════════════════════════
+         PAGE: ABOUT
+    ═══════════════════════════════════ -->
+    <style>
+    #page-about { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+    .about-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.45fr;
+      gap: 5rem; align-items: start; margin-top: 3.5rem;
+    }
+    .about-float-cards {
+      position: absolute; right: -80px; top: 30%;
+      transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .about-details { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .about-p { color: var(--muted2); line-height: 1.88; margin-bottom: 1.25rem; font-size: 1rem; }
+    .about-interests { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
+
+    /* Edu */
+    .edu-section { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 1.5rem; margin-top: 2rem; }
+
+    /* Soft skills / extras */
+    .extras-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .extra-card {
+      padding: 1.2rem 1.4rem; border-radius: 14px;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .extra-label { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .extra-val   { font-size: .9rem; color: var(--white); font-weight: 500; line-height: 1.55; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-float-cards { display: none; }
+    }
+    @media (max-width: 700px) {
+      .about-hero { padding: 4rem 1.5rem 2rem; }
+      .edu-section { padding: 0 1.5rem 4rem; }
+    }
+    </style>
+
+    <div class="about-hero">
+      <div class="label reveal">02 — About Me</div>
+      <h1 class="h2 reveal" style="transition-delay:.05s">The Person <span class="grad">Behind the Code</span></h1>
+
+      <div class="about-grid">
+        <!-- LEFT: Visual -->
+        <div class="reveal-left">
+          <div style="position:relative">
+            <div class="about-photo-frame">
+              <div class="about-photo-corner corner-tl"></div>
+              <div class="about-photo-corner corner-tr"></div>
+              <div class="about-photo-corner corner-bl"></div>
+              <div class="about-photo-corner corner-br"></div>
+              <div class="about-photo-inner">SK</div>
+            </div>
+            <div class="about-float-cards">
+              <div class="about-float-card">
+                <div class="afc-icon">🚀</div>
+                <div class="afc-val">5+</div>
+                <div class="afc-lbl">Projects</div>
+              </div>
+              <div class="about-float-card">
+                <div class="afc-icon">👥</div>
+                <div class="afc-val">60+</div>
+                <div class="afc-lbl">Led (NSS)</div>
+              </div>
+              <div class="about-float-card">
+                <div class="afc-icon">📍</div>
+                <div class="afc-val">GZB</div>
+                <div class="afc-lbl">India</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-interests" style="margin-top:1.6rem">
+            <span class="interest-pill">🤖 AI Automation</span>
+            <span class="interest-pill">📅 Smart Scheduling</span>
+            <span class="interest-pill">🔐 Cybersecurity</span>
+            <span class="interest-pill">📊 Predictive Modeling</span>
+            <span class="interest-pill">🖥️ Full Stack</span>
+            <span class="interest-pill">👁️ Computer Vision</span>
+            <span class="interest-pill">🎙️ Public Speaking</span>
+            <span class="interest-pill">🌐 HCI</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Content -->
+        <div class="about-content reveal-right" style="transition-delay:.1s">
+          <div class="label">Bio</div>
+          <h2 class="h3" style="margin-bottom:1.2rem">Hey there, I'm <span class="grad">Saksham Kotia</span> 👋</h2>
+          <p class="about-p">
+            I'm a motivated B.Tech Computer Science student at Jaypee Institute of Information Technology (JIIT),
+            with a strong foundation in programming, data analysis, and system design. I'm skilled in C++, Python,
+            and SQL, with hands-on experience through academic projects in automation and AI-based solutions.
+          </p>
+          <p class="about-p">
+            Known for my problem-solving ability, attention to detail, and commitment to learning — I sit at the
+            intersection of engineering and design. Whether building a MERN Stack app, training a computer vision
+            model, or designing an optimisation algorithm, I bring the same energy and precision to everything.
+          </p>
+          <p class="about-p">
+            Beyond the screen: General Secretary at NSS, Core Committee Head at the Jaypee Youth Club, and
+            a passionate advocate for tech-driven social impact. Seeking to contribute my technical and
+            analytical skills to drive digital innovation.
+          </p>
+
+          <div class="about-details">
+            <div class="detail-row"><span class="detail-key">University</span><span class="detail-val">Jaypee Institute of IT (JIIT)</span></div>
+            <div class="detail-row"><span class="detail-key">Degree</span><span class="detail-val">B.Tech CSE</span></div>
+            <div class="detail-row"><span class="detail-key">Graduating</span><span class="detail-val">2026 (Pursuing)</span></div>
+            <div class="detail-row"><span class="detail-key">Location</span><span class="detail-val">Ghaziabad, NCR, India</span></div>
+            <div class="detail-row"><span class="detail-key">Phone</span><span class="detail-val">+91 88004 09904</span></div>
+            <div class="detail-row"><span class="detail-key">Status</span><span class="detail-val" style="color:#4ade80">● Open to Work</span></div>
+          </div>
+
+          <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
+            <button class="btn btn-primary">Download Resume ↓</button>
+            <button class="btn btn-outline" onclick="navigate('contact')">Get in Touch →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" style="max-width:1100px;margin:0 auto"></div>
+
+    <!-- EDUCATION -->
+    <div class="edu-section">
+      <div class="label reveal">Education</div>
+      <h2 class="h3 reveal" style="transition-delay:.05s;margin-bottom:.3rem">Academic <span class="grad">Foundation</span></h2>
+
+      <div class="edu-grid stagger" style="margin-top:2rem">
+        <div class="card card-glow" style="padding:2rem;border-radius:18px">
+          <div class="edu-card-year">2022 – 2026 (Pursuing)</div>
+          <div class="edu-card-title">B.Tech — Computer Science &amp; Engineering</div>
+          <div class="edu-card-sub">Jaypee Institute of Information Technology (JIIT)</div>
+          <div class="edu-card-org">Noida, Uttar Pradesh</div>
+          <div class="courses-list" style="margin-top:1rem">
+            <span class="tag tag-cyan">DSA</span>
+            <span class="tag tag-purple">AI / ML</span>
+            <span class="tag tag-indigo">Computer Networks</span>
+            <span class="tag tag-gray">DBMS</span>
+            <span class="tag tag-pink">Cybersecurity</span>
+            <span class="tag tag-gray">System Design</span>
+          </div>
+        </div>
+        <div class="card card-glow" style="padding:2rem;border-radius:18px">
+          <div class="edu-card-year">Cleared 2023</div>
+          <div class="edu-card-title">Intermediate — PCM + Computer Science</div>
+          <div class="edu-card-sub">CBSE Board</div>
+          <div class="edu-card-org">Bal Bharati Public School, Brij Vihar — 201011</div>
+          <div class="courses-list" style="margin-top:1rem">
+            <span class="tag tag-cyan">Physics</span>
+            <span class="tag tag-purple">Mathematics</span>
+            <span class="tag tag-gray">Chemistry</span>
+            <span class="tag tag-gray">Python</span>
+            <span class="tag tag-gray">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXTRAS: Soft Skills, Languages, Interests -->
+      <div class="label reveal" style="margin-top:3.5rem">At a Glance</div>
+      <div class="extras-grid stagger">
+        <div class="card extra-card">
+          <div class="extra-label">🤝 Soft Skills</div>
+          <div class="extra-val">Leadership · Event Management · Team Collaboration · Communication · Time Management · Problem Solving · Adaptability</div>
+        </div>
+        <div class="card extra-card">
+          <div class="extra-label">🌐 Languages Known</div>
+          <div class="extra-val">English <span style="color:var(--muted);font-size:.82rem">(Professional Working Proficiency)</span><br>Hindi <span style="color:var(--muted);font-size:.82rem">(Native)</span></div>
+        </div>
+        <div class="card extra-card">
+          <div class="extra-label">⌨️ Typing Speed</div>
+          <div class="extra-val" style="font-family:var(--display);font-size:1.4rem;color:var(--c1)">55 WPM <span style="font-size:.8rem;color:var(--muted2);font-family:var(--font)">with 98% accuracy</span></div>
+        </div>
+        <div class="card extra-card">
+          <div class="extra-label">💡 Interests</div>
+          <div class="extra-val">Technology · Management · Public Speaking · Volunteering · Creative Design</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div class="footer-center">B.Tech CSE · JIIT · Ghaziabad, India</div>
+      <div class="footer-right"><span>●</span> Open to Work</div>
+    </div>
+  </div>
+  <div class="page"        id="page-projects">
+    <!-- ═══════════════════════════════════
+         PAGE: PROJECTS
+         (5 real projects from resume + "more coming" card)
+    ═══════════════════════════════════ -->
+    <style>
+    #page-projects { background: var(--bg); }
+    .projects-hero { padding: 5rem 3rem 3rem; max-width: 1200px; margin: 0 auto; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem; padding: 0 3rem 3rem; max-width: 1200px; margin: 0 auto;
+    }
+    .project-filter { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* Large number watermark */
+    .proj-num {
+      position: absolute; top: 1.2rem; right: 1.4rem;
+      font-family: var(--display); font-size: 3.5rem; font-weight: 900;
+      color: rgba(255,255,255,.03); letter-spacing: -.05em;
+      line-height: 1; pointer-events: none; user-select: none;
+      transition: color .3s;
+    }
+    .project-card:hover .proj-num { color: rgba(99,102,241,.06); }
+
+    /* "More Coming" placeholder card */
+    .proj-coming {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 280px; border: 1px dashed rgba(99,102,241,.25);
+      border-radius: 20px; text-align: center; padding: 2rem; gap: 1rem;
+      background: linear-gradient(135deg, rgba(99,102,241,.03), rgba(56,189,248,.02));
+      cursor: default; transition: all .3s;
+    }
+    .proj-coming:hover { border-color: rgba(99,102,241,.5); background: rgba(99,102,241,.05); }
+    .proj-coming-icon { font-size: 2.5rem; opacity: .6; }
+    .proj-coming-title { font-family: var(--display); font-size: .9rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted2); }
+    .proj-coming-sub   { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .06em; }
+
+    @media (max-width: 900px) { .project-card.featured { grid-column: span 1; } }
+    @media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; padding: 0 1.5rem 3rem; } }
+    </style>
+
+    <div class="projects-hero">
+      <div class="label reveal">03 — Projects</div>
+      <h1 class="h2 reveal" style="transition-delay:.05s">Things I've <span class="grad">Built</span></h1>
+      <p class="body-text reveal" style="max-width:580px;margin-top:.8rem;transition-delay:.1s">
+        From AI-powered speech systems to cybersecurity tools and computer vision apps — each project is a story of learning, building, and shipping.
+        <span style="color:var(--c1)">More projects coming soon.</span>
+      </p>
+      <div class="project-filter stagger" style="margin-top:1.6rem">
+        <button class="filter-btn active" data-filter="all"><span>All</span></button>
+        <button class="filter-btn" data-filter="ai"><span>AI / ML</span></button>
+        <button class="filter-btn" data-filter="web"><span>Web Dev</span></button>
+        <button class="filter-btn" data-filter="cv"><span>Computer Vision</span></button>
+        <button class="filter-btn" data-filter="security"><span>Cybersecurity</span></button>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1: TalkBridge — FEATURED -->
+      <div class="project-card card featured reveal" style="position:relative" data-cat="ai">
+        <div class="proj-num">01</div>
+        <div class="proj-top">
+          <div class="proj-icon">🎤</div>
+          <div class="proj-meta">
+            <div class="proj-year">AI · Speech</div>
+            <div class="proj-links">
+              <a href="#" class="proj-link">GH</a>
+              <a href="#" class="proj-link">↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-title">TalkBridge</div>
+        <div class="proj-desc">
+          A smart real-time speech translation system that bridges language barriers. Utilises Python's speech recognition,
+          translation, and text-to-speech APIs to enable seamless cross-language communication. Designed with accessibility
+          in mind for multilingual environments.
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">Python</span>
+          <span class="tag tag-purple">Speech Recognition</span>
+          <span class="tag tag-indigo">Google TTS</span>
+          <span class="tag tag-gray">NLP</span>
+          <span class="tag tag-gray">Real-time API</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Virtual Try-On — FEATURED -->
+      <div class="project-card card featured reveal" style="position:relative;transition-delay:.05s" data-cat="cv">
+        <div class="proj-num">02</div>
+        <div class="proj-top">
+          <div class="proj-icon">👓</div>
+          <div class="proj-meta">
+            <div class="proj-year">CV · Python</div>
+            <div class="proj-links">
+              <a href="#" class="proj-link">GH</a>
+              <a href="#" class="proj-link">↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-title">Virtual Try-On System</div>
+        <div class="proj-desc">
+          An AI-based virtual eyewear try-on system using facial landmark detection with OpenCV and MediaPipe.
+          Implements real-time overlay and resizing of virtual frames on detected faces, with accurate landmark
+          mapping and an intuitive GUI for a seamless user experience.
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">Python</span>
+          <span class="tag tag-purple">OpenCV</span>
+          <span class="tag tag-indigo">MediaPipe</span>
+          <span class="tag tag-gray">Facial Landmarks</span>
+          <span class="tag tag-gray">GUI</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Kitchen Diary -->
+      <div class="project-card card reveal" style="position:relative;transition-delay:.1s" data-cat="web">
+        <div class="proj-num">03</div>
+        <div class="proj-top">
+          <div class="proj-icon">🍳</div>
+          <div class="proj-meta">
+            <div class="proj-year">Web · MERN</div>
+            <div class="proj-links">
+              <a href="#" class="proj-link">GH</a>
+              <a href="#" class="proj-link">↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-title">Kitchen Diary</div>
+        <div class="proj-desc">
+          A recipe management web app where users can view, add, and share original dishes. Features database integration
+          for dynamic storage and categorisation of user-generated recipes, with a clean UI and responsive design.
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">React</span>
+          <span class="tag tag-purple">Node.js</span>
+          <span class="tag tag-indigo">Express</span>
+          <span class="tag tag-gray">MongoDB</span>
+          <span class="tag tag-gray">SQL</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: CipherChat -->
+      <div class="project-card card reveal" style="position:relative;transition-delay:.15s" data-cat="security">
+        <div class="proj-num">04</div>
+        <div class="proj-top">
+          <div class="proj-icon">🔐</div>
+          <div class="proj-meta">
+            <div class="proj-year">Security · Python</div>
+            <div class="proj-links">
+              <a href="#" class="proj-link">GH</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-title">CipherChat</div>
+        <div class="proj-desc">
+          A secure chat tool encrypting both text and images using AES and RSA algorithms. Integrates steganography
+          for hidden data transfer, ensuring confidentiality. Built with an intuitive interface for smooth
+          encryption/decryption workflows.
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">Python</span>
+          <span class="tag tag-purple">AES / RSA</span>
+          <span class="tag tag-indigo">Steganography</span>
+          <span class="tag tag-pink">Cryptography</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Maritime Scheduling -->
+      <div class="project-card card reveal" style="position:relative;transition-delay:.2s" data-cat="ai">
+        <div class="proj-num">05</div>
+        <div class="proj-top">
+          <div class="proj-icon">🚢</div>
+          <div class="proj-meta">
+            <div class="proj-year">AI / Optimisation</div>
+            <div class="proj-links">
+              <a href="#" class="proj-link">GH</a>
+            </div>
+          </div>
+        </div>
+        <div class="proj-title">Maritime Docking &amp; Resource Scheduler</div>
+        <div class="proj-desc">
+          A scheduling solution optimising ship docking and port resource allocation using priority algorithms.
+          Implements efficient time-slot management, system flowcharts, and data models for real-time port operations.
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">Python</span>
+          <span class="tag tag-purple">Algorithms</span>
+          <span class="tag tag-indigo">Optimisation</span>
+          <span class="tag tag-gray">Data Modelling</span>
+        </div>
+      </div>
+
+      <!-- COMING SOON placeholder -->
+      <div class="proj-coming reveal" style="transition-delay:.25s">
+        <div class="proj-coming-icon">🛠️</div>
+        <div class="proj-coming-title">More Projects Coming</div>
+        <div class="proj-coming-sub">Currently building something awesome…<br>Check back soon or visit GitHub.</div>
+        <a href="https://github.com/sakshamkotia" target="_blank" class="btn btn-ghost" style="font-size:.72rem;padding:.5rem 1.1rem;margin-top:.5rem">View GitHub ↗</a>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">5 projects · More on the way</div>
+      <a href="https://github.com/sakshamkotia" target="_blank" class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem">View GitHub ↗</a>
+    </div>
+  </div>
+  <div class="page"        id="page-experience">
+    <!-- ═══════════════════════════════════
+         PAGE: EXPERIENCE
+         (Positions of Responsibility from resume)
+    ═══════════════════════════════════ -->
+    <style>
+    #page-experience { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+    .exp-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; }
+    .timeline-wrap {
+      max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem;
+      position: relative;
+    }
+    .timeline-wrap::before {
+      content: ''; position: absolute;
+      left: calc(3rem + 28px); top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, var(--c1), var(--c2), var(--c3), transparent);
+    }
+    .tl-item {
+      display: grid; grid-template-columns: 64px 1fr;
+      gap: 2rem; margin-bottom: 2.5rem; align-items: start;
+    }
+    .tl-dot-col {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: .5rem;
+    }
+
+    /* R&D interests highlight section */
+    .rd-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
+    .rd-grid { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
+    .rd-pill {
+      background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(56,189,248,.05));
+      border: 1px solid rgba(99,102,241,.2); border-radius: 100px;
+      padding: .55rem 1.3rem; font-size: .88rem; color: var(--white);
+      font-weight: 500; transition: all .25s var(--spring);
+    }
+    .rd-pill:hover { border-color: var(--c1); color: var(--c1); transform: translateY(-2px); }
+
+    /* Highlights */
+    .highlights-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .highlight-card {
+      padding: 1.5rem; border-radius: 16px;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all .3s var(--spring);
+    }
+    .highlight-card:hover { transform: translateY(-4px); }
+    .hl-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: .1rem; }
+    .hl-title { font-weight: 700; font-size: .95rem; }
+    .hl-sub   { font-family: var(--mono); font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+    .hl-val   { font-family: var(--display); font-size: 1.2rem; font-weight: 900; color: var(--c1); margin-top: .4rem; }
+
+    @media (max-width: 700px) {
+      .exp-hero { padding: 4rem 1.5rem 2rem; }
+      .timeline-wrap, .highlights-wrap, .rd-wrap { padding: 0 1.5rem 3rem; }
+      .tl-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+      .timeline-wrap::before { left: calc(1.5rem + 20px); }
+    }
+    </style>
+
+    <div class="exp-hero">
+      <div class="label reveal">04 — Experience &amp; Leadership</div>
+      <h1 class="h2 reveal" style="transition-delay:.05s">Where I've <span class="grad">Contributed</span></h1>
+      <p class="body-text reveal" style="max-width:560px;margin-top:.8rem;transition-delay:.1s">
+        Leadership roles, community contributions, and positions of responsibility that have shaped who I am as a developer and leader.
+      </p>
+    </div>
+
+    <div class="timeline-wrap">
+
+      <!-- NSS General Secretary -->
+      <div class="tl-item reveal">
+        <div class="tl-dot-col"><div class="tl-dot active"></div></div>
+        <div class="tl-card card card-glow">
+          <div class="tl-role">General Secretary <span class="tl-badge tl-badge-lead">Leadership</span></div>
+          <div class="tl-org">National Service Scheme (NSS) · Jaypee Institute of Information Technology</div>
+          <div class="tl-date">Current Role</div>
+          <ul class="tl-desc">
+            <li>Led 60+ volunteers in planning and executing university-level social initiatives and outreach programs.</li>
+            <li>Oversaw event coordination, communication, and reporting between campus teams and administration.</li>
+            <li>Organised tech literacy drives, community service campaigns, and health awareness events reaching hundreds of participants.</li>
+          </ul>
+          <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+            <span class="tag tag-cyan">Leadership</span>
+            <span class="tag tag-purple">Team Management</span>
+            <span class="tag tag-gray">Event Planning</span>
+            <span class="tag tag-gray">Communication</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jaypee Youth Club -->
+      <div class="tl-item reveal" style="transition-delay:.1s">
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card card card-glow">
+          <div class="tl-role">Core Committee Head <span class="tl-badge tl-badge-vol">Management</span></div>
+          <div class="tl-org">Jaypee Youth Club (JYC) · Jaypee Institute of Information Technology</div>
+          <div class="tl-date">Current Role</div>
+          <ul class="tl-desc">
+            <li>Spearheaded the college's central event management society responsible for all major cultural and technical events.</li>
+            <li>Managed cross-departmental coordination, logistics, and on-ground execution involving 500+ participants.</li>
+            <li>Led a core team through high-pressure events, demonstrating strong organisational and interpersonal skills.</li>
+          </ul>
+          <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+            <span class="tag tag-purple">Event Management</span>
+            <span class="tag tag-gray">Cross-Dept Coordination</span>
+            <span class="tag tag-gray">Logistics</span>
+            <span class="tag tag-cyan">500+ Participants</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Projects -->
+      <div class="tl-item reveal" style="transition-delay:.15s">
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card card card-glow">
+          <div class="tl-role">Academic Project Developer <span class="tl-badge tl-badge-work">Academic</span></div>
+          <div class="tl-org">JIIT · Personal Projects</div>
+          <div class="tl-date">2022 – Present</div>
+          <ul class="tl-desc">
+            <li>Built 5+ projects across AI, cybersecurity, computer vision, and web development domains.</li>
+            <li>Applied Python, MERN Stack, OpenCV, and cryptography libraries to solve real-world problems.</li>
+            <li>Demonstrated end-to-end project ownership — from ideation and design to implementation and testing.</li>
+          </ul>
+          <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap">
+            <span class="tag tag-cyan">Python</span>
+            <span class="tag tag-purple">MERN Stack</span>
+            <span class="tag tag-gray">OpenCV</span>
+            <span class="tag tag-gray">AI / ML</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- R&D INTERESTS -->
+    <div class="rd-wrap">
+      <div class="divider-glow" style="margin-bottom:3rem"></div>
+      <div class="label reveal">Research &amp; Development Interests</div>
+      <div class="rd-grid stagger">
+        <div class="rd-pill">🤖 AI-based Automation</div>
+        <div class="rd-pill">📅 Smart Scheduling Systems</div>
+        <div class="rd-pill">📈 Predictive Modeling</div>
+        <div class="rd-pill">🔐 Cybersecurity</div>
+        <div class="rd-pill">🖱️ Human–Computer Interaction</div>
+      </div>
+    </div>
+
+    <!-- IMPACT NUMBERS -->
+    <div class="highlights-wrap">
+      <div class="label reveal">Impact Numbers</div>
+      <div class="highlights-grid stagger">
+        <div class="card highlight-card"><div class="hl-icon">🧑‍🤝‍🧑</div><div><div class="hl-title">Volunteers Led</div><div class="hl-sub">NSS · JIIT</div><div class="hl-val">60+</div></div></div>
+        <div class="card highlight-card"><div class="hl-icon">🎉</div><div><div class="hl-title">Event Participants</div><div class="hl-sub">JYC Major Events</div><div class="hl-val">500+</div></div></div>
+        <div class="card highlight-card"><div class="hl-icon">🚀</div><div><div class="hl-title">Projects Built</div><div class="hl-sub">AI · Web · CV · Security</div><div class="hl-val">5+</div></div></div>
+        <div class="card highlight-card"><div class="hl-icon">⌨️</div><div><div class="hl-title">Typing Speed</div><div class="hl-sub">with 98% accuracy</div><div class="hl-val">55 WPM</div></div></div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Leading · Building · Growing</div>
+      <button class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem" onclick="navigate('contact')">Work with me →</button>
+    </div>
+  </div>
+  <div class="page"        id="page-skills">
+    <!-- ═══════════════════════════════════
+         PAGE: SKILLS
+    ═══════════════════════════════════ -->
+    <style>
+    #page-skills { background: var(--bg); }
+    .skills-hero { padding: 5rem 3rem 3rem; max-width: 1200px; margin: 0 auto; }
+    .skills-body { max-width: 1200px; margin: 0 auto; padding: 0 3rem 5rem; }
+    .skill-sections { display: flex; flex-direction: column; gap: 3.5rem; }
+    .skill-chips-large { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .skill-bars { display: flex; flex-direction: column; gap: 1.3rem; margin-top: 1.5rem; }
+    .coding-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px,1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+
+    @media (max-width: 700px) {
+      .skills-hero { padding: 4rem 1.5rem 3rem; }
+      .skills-body { padding: 0 1.5rem 4rem; }
+      .skill-bar-row { grid-template-columns: 110px 1fr 34px; }
+    }
+    </style>
+
+    <div class="skills-hero">
+      <div class="label reveal">05 — Skills &amp; Tools</div>
+      <h1 class="h2 reveal" style="transition-delay:.05s">My <span class="grad">Tech Arsenal</span></h1>
+      <p class="body-text reveal" style="max-width:560px;margin-top:.8rem;transition-delay:.1s">
+        A curated stack of technologies I work with — from frontend pixels to backend architecture and AI pipelines.
+      </p>
+    </div>
+
+    <div class="skills-body">
+      <div class="skill-sections">
+
+        <!-- CORE PROFICIENCIES (skill bars) -->
+        <div class="reveal">
+          <div class="skill-group-title">Core Proficiencies</div>
+          <div class="skill-bars">
+            <div class="skill-bar-row"><span class="skill-bar-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".90"></div></div><span class="skill-bar-pct">90%</span></div>
+            <div class="skill-bar-row"><span class="skill-bar-name">C / C++</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".82"></div></div><span class="skill-bar-pct">82%</span></div>
+            <div class="skill-bar-row"><span class="skill-bar-name">JavaScript</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".78"></div></div><span class="skill-bar-pct">78%</span></div>
+            <div class="skill-bar-row"><span class="skill-bar-name">Java</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".72"></div></div><span class="skill-bar-pct">72%</span></div>
+            <div class="skill-bar-row"><span class="skill-bar-name">SQL / Databases</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".80"></div></div><span class="skill-bar-pct">80%</span></div>
+            <div class="skill-bar-row"><span class="skill-bar-name">PHP</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".60"></div></div><span class="skill-bar-pct">60%</span></div>
+          </div>
+        </div>
+
+        <!-- PROGRAMMING LANGUAGES -->
+        <div class="reveal" style="transition-delay:.06s">
+          <div class="skill-group-title">Programming Languages</div>
+          <div class="skill-chips-large stagger">
+            <div class="skill-chip-lg"><div class="sc-icon">🐍</div><div><div class="sc-name">Python</div><div class="sc-sub">Advanced</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">⚙️</div><div><div class="sc-name">C / C++</div><div class="sc-sub">Systems &amp; DSA</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">☕</div><div><div class="sc-name">Java</div><div class="sc-sub">OOP</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🌐</div><div><div class="sc-name">JavaScript</div><div class="sc-sub">Web Dev</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🐘</div><div><div class="sc-name">PHP</div><div class="sc-sub">Backend</div></div></div>
+          </div>
+        </div>
+
+        <!-- WEB TECHNOLOGIES -->
+        <div class="reveal" style="transition-delay:.12s">
+          <div class="skill-group-title">Web Technologies &amp; Frameworks</div>
+          <div class="skill-chips-large stagger">
+            <div class="skill-chip-lg"><div class="sc-icon">⚛️</div><div><div class="sc-name">React.js</div><div class="sc-sub">UI Library</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🟢</div><div><div class="sc-name">Node.js</div><div class="sc-sub">Runtime</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">⚡</div><div><div class="sc-name">Express.js</div><div class="sc-sub">Web Framework</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🍃</div><div><div class="sc-name">MongoDB</div><div class="sc-sub">NoSQL DB</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🌐</div><div><div class="sc-name">RESTful APIs</div><div class="sc-sub">API Design</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🎨</div><div><div class="sc-name">HTML5 / CSS3</div><div class="sc-sub">Markup &amp; Style</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🅱️</div><div><div class="sc-name">Bootstrap</div><div class="sc-sub">CSS Framework</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🐍</div><div><div class="sc-name">Flask</div><div class="sc-sub">Python Web</div></div></div>
+          </div>
+        </div>
+
+        <!-- AI / ML & CV -->
+        <div class="reveal" style="transition-delay:.18s">
+          <div class="skill-group-title">AI / ML &amp; Computer Vision</div>
+          <div class="skill-chips-large stagger">
+            <div class="skill-chip-lg"><div class="sc-icon">👁️</div><div><div class="sc-name">OpenCV</div><div class="sc-sub">Computer Vision</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🧠</div><div><div class="sc-name">TensorFlow</div><div class="sc-sub">Deep Learning</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🔢</div><div><div class="sc-name">NumPy</div><div class="sc-sub">Numerical Computing</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🐼</div><div><div class="sc-name">Pandas</div><div class="sc-sub">Data Analysis</div></div></div>
+          </div>
+        </div>
+
+        <!-- DATABASES -->
+        <div class="reveal" style="transition-delay:.24s">
+          <div class="skill-group-title">Database Management</div>
+          <div class="skill-chips-large stagger">
+            <div class="skill-chip-lg"><div class="sc-icon">🐬</div><div><div class="sc-name">MySQL</div><div class="sc-sub">Relational DB</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🐘</div><div><div class="sc-name">PostgreSQL</div><div class="sc-sub">Advanced SQL</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">💾</div><div><div class="sc-name">SQLite</div><div class="sc-sub">Embedded DB</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🍃</div><div><div class="sc-name">MongoDB</div><div class="sc-sub">NoSQL</div></div></div>
+          </div>
+        </div>
+
+        <!-- TOOLS & DEPLOYMENT -->
+        <div class="reveal" style="transition-delay:.30s">
+          <div class="skill-group-title">Tools, Deployment &amp; Design</div>
+          <div class="skill-chips-large stagger">
+            <div class="skill-chip-lg"><div class="sc-icon">🐙</div><div><div class="sc-name">Git / GitHub</div><div class="sc-sub">Version Control</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">▲</div><div><div class="sc-name">Netlify</div><div class="sc-sub">Hosting</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🚀</div><div><div class="sc-name">Render</div><div class="sc-sub">Deployment</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">☁️</div><div><div class="sc-name">AWS</div><div class="sc-sub">Cloud (Basic)</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">🎨</div><div><div class="sc-name">Canva</div><div class="sc-sub">Design</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">✏️</div><div><div class="sc-name">Adobe Express</div><div class="sc-sub">Graphics</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">📊</div><div><div class="sc-name">MS Office 365</div><div class="sc-sub">Productivity</div></div></div>
+            <div class="skill-chip-lg"><div class="sc-icon">💙</div><div><div class="sc-name">VS Code</div><div class="sc-sub">Primary IDE</div></div></div>
+          </div>
+        </div>
+
+        <!-- DSA Highlight -->
+        <div class="reveal" style="transition-delay:.36s">
+          <div class="skill-group-title">Data Structures &amp; Algorithms</div>
+          <div class="card" style="padding:1.8rem 2rem;border-radius:18px;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+            <div style="font-size:2.5rem">🧩</div>
+            <div style="flex:1">
+              <div style="font-weight:700;font-size:1rem;margin-bottom:.5rem">Strong DSA Foundation</div>
+              <div style="color:var(--muted2);font-size:.88rem;line-height:1.7">
+                Strong foundation in problem-solving, complexity analysis, and algorithmic implementation using <span style="color:var(--c1)">C++ and Python</span>.
+                Comfortable with arrays, trees, graphs, dynamic programming, and greedy algorithms.
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem">
+                <span class="tag tag-cyan">Arrays &amp; Strings</span>
+                <span class="tag tag-purple">Trees / Graphs</span>
+                <span class="tag tag-indigo">Dynamic Programming</span>
+                <span class="tag tag-gray">Sorting / Searching</span>
+                <span class="tag tag-gray">Greedy</span>
+                <span class="tag tag-gray">Backtracking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Always learning · Always building</div>
+      <button class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem" onclick="navigate('projects')">See My Projects →</button>
+    </div>
+  </div>
+  <div class="page"        id="page-contact">
+    <!-- ═══════════════════════════════════
+         PAGE: CONTACT
+    ═══════════════════════════════════ -->
+    <style>
+    #page-contact { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+    .contact-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+    .contact-hero-sub { max-width: 520px; margin: .8rem auto 0; color: var(--muted2); line-height: 1.78; }
+    .contact-body {
+      max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+    }
+    .contact-form-card { padding: 2.5rem; border-radius: 22px; }
+    .form-terminal-bar {
+      font-family: var(--mono); font-size: .68rem; color: var(--c1);
+      margin-bottom: 1.6rem; letter-spacing: .07em;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .form-terminal-bar::before { content: '>'; color: var(--c2); }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      font-family: var(--mono); font-size: .9rem; color: #4ade80;
+    }
+    .form-success.show { display: block; }
+    .contact-info-title {
+      font-family: var(--display); font-size: 1.25rem; font-weight: 900;
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem;
+    }
+    .contact-info-sub { color: var(--muted2); font-size: .9rem; line-height: 1.78; margin-bottom: 1.5rem; }
+    .response-card {
+      margin-top: 1.5rem; padding: 1.2rem; border-radius: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+    }
+    .rc-label { font-family: var(--mono); font-size: .63rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .5rem; }
+
+    @media (max-width: 900px) { .contact-body { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) {
+      .contact-hero { padding: 4rem 1.5rem 2rem; }
+      .contact-body { padding: 0 1.5rem 4rem; }
+    }
+    </style>
+
+    <div class="contact-hero">
+      <div class="label reveal" style="justify-content:center">06 — Contact</div>
+      <h1 class="h2 reveal" style="transition-delay:.05s">Let's <span class="grad">Build Together</span></h1>
+      <p class="contact-hero-sub reveal" style="transition-delay:.1s">
+        Whether you're a recruiter, founder, or fellow developer — I'd love to hear from you.
+        Always open for internship opportunities, collaborations, and great conversations.
+      </p>
+    </div>
+
+    <div class="contact-body">
+      <!-- FORM -->
+      <div class="contact-form-card card card-glow reveal">
+        <div class="form-terminal-bar">send_message( ) — Let's Connect</div>
+        <div class="form-row">
+          <label>name</label>
+          <input type="text" id="form-name" placeholder="Your full name" autocomplete="name"/>
+        </div>
+        <div class="form-row">
+          <label>email</label>
+          <input type="email" id="form-email" placeholder="your@email.com" autocomplete="email"/>
+        </div>
+        <div class="form-row">
+          <label>subject</label>
+          <input type="text" id="form-subject" placeholder="Internship · Collaboration · Project · Just saying hi"/>
+        </div>
+        <div class="form-row">
+          <label>message</label>
+          <textarea id="form-message" placeholder="Tell me what you're working on, or what opportunity you have in mind..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" id="send-btn" onclick="handleFormSubmit()">
+          Send Message →
+        </button>
+        <div class="form-success" id="form-success">
+          ✅ Message sent! I'll reply within 24 hours.
+        </div>
+      </div>
+
+      <!-- SIDE INFO -->
+      <div class="reveal" style="transition-delay:.12s">
+        <div class="availability-card" style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem">
+          <div class="av-dot" style="margin-top:.3rem;flex-shrink:0"></div>
+          <div>
+            <div class="av-text">Available for Internships</div>
+            <div class="av-sub">Actively seeking SDE Intern / Research roles. Response within 24 hours.</div>
+          </div>
+        </div>
+
+        <div class="contact-info-title">Get in Touch</div>
+        <p class="contact-info-sub">Reach Saksham directly via any of these channels.</p>
+
+        <a href="mailto:kotiasaksham@gmail.com" class="contact-link card">
+          <div class="cl-icon" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.14)">✉</div>
+          <div>
+            <div class="cl-label">Email</div>
+            <div class="cl-value">kotiasaksham@gmail.com</div>
+          </div>
+        </a>
+
+        <a href="tel:+918800409904" class="contact-link card">
+          <div class="cl-icon" style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18)">📞</div>
+          <div>
+            <div class="cl-label">Phone</div>
+            <div class="cl-value">+91 88004 09904</div>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/sakshamkotia" target="_blank" class="contact-link card">
+          <div class="cl-icon" style="background:rgba(0,119,181,.08);border:1px solid rgba(0,119,181,.22)">🔗</div>
+          <div>
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-value">linkedin.com/in/sakshamkotia</div>
+          </div>
+        </a>
+
+        <a href="https://github.com/sakshamkotia" target="_blank" class="contact-link card">
+          <div class="cl-icon" style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.18)">💻</div>
+          <div>
+            <div class="cl-label">GitHub</div>
+            <div class="cl-value">github.com/sakshamkotia</div>
+          </div>
+        </a>
+
+        <div class="response-card">
+          <div class="rc-label">Response Time</div>
+          <div style="font-size:.9rem;color:var(--muted2)">
+            Usually within <span style="color:var(--c1);font-weight:600">24 hours</span>.
+            Based in <span style="color:var(--white);font-weight:600">Ghaziabad, NCR, India</span>
+            (IST, UTC+5:30).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-logo">SK.DEV</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Made with ♥ in India · 2025</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)"><span style="color:var(--c1)">●</span> Open to Opportunities</div>
+    </div>
+
+    <script>
+    function handleFormSubmit() {
+      const name = document.getElementById('form-name').value.trim();
+      const email = document.getElementById('form-email').value.trim();
+      if (!name || !email) {
+        alert('Please fill in your name and email.');
+        return;
+      }
+      const btn = document.getElementById('send-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      }, 1200);
+    }
+    </script>
+  </div>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script src="js/animations.js?v=1.3"></script>
+<script src="js/interactions.js?v=1.3"></script>
+<script src="js/main.js?v=1.3"></script>
+<script src="js/avatar.js?v=1.3"></script>
+
+<script>
+  // Init image-based avatar after DOM is ready
+  window.addEventListener('load', () => {
+    initAvatar();
+  });
+</script>
+</body>
+</html>

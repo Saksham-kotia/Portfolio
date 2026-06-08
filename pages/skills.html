@@ -1,0 +1,138 @@
+<!-- ═══════════════════════════════════
+     PAGE: SKILLS
+═══════════════════════════════════ -->
+<style>
+#page-skills { background: var(--bg); }
+.skills-hero { padding: 5rem 3rem 3rem; max-width: 1200px; margin: 0 auto; }
+.skills-body { max-width: 1200px; margin: 0 auto; padding: 0 3rem 5rem; }
+.skill-sections { display: flex; flex-direction: column; gap: 3.5rem; }
+.skill-chips-large { display: flex; flex-wrap: wrap; gap: .8rem; }
+.skill-bars { display: flex; flex-direction: column; gap: 1.3rem; margin-top: 1.5rem; }
+.coding-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px,1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+
+@media (max-width: 700px) {
+  .skills-hero { padding: 4rem 1.5rem 3rem; }
+  .skills-body { padding: 0 1.5rem 4rem; }
+  .skill-bar-row { grid-template-columns: 110px 1fr 34px; }
+}
+</style>
+
+<div class="skills-hero">
+  <div class="label reveal">05 — Skills &amp; Tools</div>
+  <h1 class="h2 reveal" style="transition-delay:.05s">My <span class="grad">Tech Arsenal</span></h1>
+  <p class="body-text reveal" style="max-width:560px;margin-top:.8rem;transition-delay:.1s">
+    A curated stack of technologies I work with — from frontend pixels to backend architecture and AI pipelines.
+  </p>
+</div>
+
+<div class="skills-body">
+  <div class="skill-sections">
+
+    <!-- CORE PROFICIENCIES (skill bars) -->
+    <div class="reveal">
+      <div class="skill-group-title">Core Proficiencies</div>
+      <div class="skill-bars">
+        <div class="skill-bar-row"><span class="skill-bar-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".90"></div></div><span class="skill-bar-pct">90%</span></div>
+        <div class="skill-bar-row"><span class="skill-bar-name">C / C++</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".82"></div></div><span class="skill-bar-pct">82%</span></div>
+        <div class="skill-bar-row"><span class="skill-bar-name">JavaScript</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".78"></div></div><span class="skill-bar-pct">78%</span></div>
+        <div class="skill-bar-row"><span class="skill-bar-name">Java</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".72"></div></div><span class="skill-bar-pct">72%</span></div>
+        <div class="skill-bar-row"><span class="skill-bar-name">SQL / Databases</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".80"></div></div><span class="skill-bar-pct">80%</span></div>
+        <div class="skill-bar-row"><span class="skill-bar-name">PHP</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width=".60"></div></div><span class="skill-bar-pct">60%</span></div>
+      </div>
+    </div>
+
+    <!-- PROGRAMMING LANGUAGES -->
+    <div class="reveal" style="transition-delay:.06s">
+      <div class="skill-group-title">Programming Languages</div>
+      <div class="skill-chips-large stagger">
+        <div class="skill-chip-lg"><div class="sc-icon">🐍</div><div><div class="sc-name">Python</div><div class="sc-sub">Advanced</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">⚙️</div><div><div class="sc-name">C / C++</div><div class="sc-sub">Systems &amp; DSA</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">☕</div><div><div class="sc-name">Java</div><div class="sc-sub">OOP</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🌐</div><div><div class="sc-name">JavaScript</div><div class="sc-sub">Web Dev</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🐘</div><div><div class="sc-name">PHP</div><div class="sc-sub">Backend</div></div></div>
+      </div>
+    </div>
+
+    <!-- WEB TECHNOLOGIES -->
+    <div class="reveal" style="transition-delay:.12s">
+      <div class="skill-group-title">Web Technologies &amp; Frameworks</div>
+      <div class="skill-chips-large stagger">
+        <div class="skill-chip-lg"><div class="sc-icon">⚛️</div><div><div class="sc-name">React.js</div><div class="sc-sub">UI Library</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🟢</div><div><div class="sc-name">Node.js</div><div class="sc-sub">Runtime</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">⚡</div><div><div class="sc-name">Express.js</div><div class="sc-sub">Web Framework</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🍃</div><div><div class="sc-name">MongoDB</div><div class="sc-sub">NoSQL DB</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🌐</div><div><div class="sc-name">RESTful APIs</div><div class="sc-sub">API Design</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🎨</div><div><div class="sc-name">HTML5 / CSS3</div><div class="sc-sub">Markup &amp; Style</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🅱️</div><div><div class="sc-name">Bootstrap</div><div class="sc-sub">CSS Framework</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🐍</div><div><div class="sc-name">Flask</div><div class="sc-sub">Python Web</div></div></div>
+      </div>
+    </div>
+
+    <!-- AI / ML & CV -->
+    <div class="reveal" style="transition-delay:.18s">
+      <div class="skill-group-title">AI / ML &amp; Computer Vision</div>
+      <div class="skill-chips-large stagger">
+        <div class="skill-chip-lg"><div class="sc-icon">👁️</div><div><div class="sc-name">OpenCV</div><div class="sc-sub">Computer Vision</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🧠</div><div><div class="sc-name">TensorFlow</div><div class="sc-sub">Deep Learning</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🔢</div><div><div class="sc-name">NumPy</div><div class="sc-sub">Numerical Computing</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🐼</div><div><div class="sc-name">Pandas</div><div class="sc-sub">Data Analysis</div></div></div>
+      </div>
+    </div>
+
+    <!-- DATABASES -->
+    <div class="reveal" style="transition-delay:.24s">
+      <div class="skill-group-title">Database Management</div>
+      <div class="skill-chips-large stagger">
+        <div class="skill-chip-lg"><div class="sc-icon">🐬</div><div><div class="sc-name">MySQL</div><div class="sc-sub">Relational DB</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🐘</div><div><div class="sc-name">PostgreSQL</div><div class="sc-sub">Advanced SQL</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">💾</div><div><div class="sc-name">SQLite</div><div class="sc-sub">Embedded DB</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🍃</div><div><div class="sc-name">MongoDB</div><div class="sc-sub">NoSQL</div></div></div>
+      </div>
+    </div>
+
+    <!-- TOOLS & DEPLOYMENT -->
+    <div class="reveal" style="transition-delay:.30s">
+      <div class="skill-group-title">Tools, Deployment &amp; Design</div>
+      <div class="skill-chips-large stagger">
+        <div class="skill-chip-lg"><div class="sc-icon">🐙</div><div><div class="sc-name">Git / GitHub</div><div class="sc-sub">Version Control</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">▲</div><div><div class="sc-name">Netlify</div><div class="sc-sub">Hosting</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🚀</div><div><div class="sc-name">Render</div><div class="sc-sub">Deployment</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">☁️</div><div><div class="sc-name">AWS</div><div class="sc-sub">Cloud (Basic)</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">🎨</div><div><div class="sc-name">Canva</div><div class="sc-sub">Design</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">✏️</div><div><div class="sc-name">Adobe Express</div><div class="sc-sub">Graphics</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">📊</div><div><div class="sc-name">MS Office 365</div><div class="sc-sub">Productivity</div></div></div>
+        <div class="skill-chip-lg"><div class="sc-icon">💙</div><div><div class="sc-name">VS Code</div><div class="sc-sub">Primary IDE</div></div></div>
+      </div>
+    </div>
+
+    <!-- DSA Highlight -->
+    <div class="reveal" style="transition-delay:.36s">
+      <div class="skill-group-title">Data Structures &amp; Algorithms</div>
+      <div class="card" style="padding:1.8rem 2rem;border-radius:18px;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+        <div style="font-size:2.5rem">🧩</div>
+        <div style="flex:1">
+          <div style="font-weight:700;font-size:1rem;margin-bottom:.5rem">Strong DSA Foundation</div>
+          <div style="color:var(--muted2);font-size:.88rem;line-height:1.7">
+            Strong foundation in problem-solving, complexity analysis, and algorithmic implementation using <span style="color:var(--c1)">C++ and Python</span>.
+            Comfortable with arrays, trees, graphs, dynamic programming, and greedy algorithms.
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem">
+            <span class="tag tag-cyan">Arrays &amp; Strings</span>
+            <span class="tag tag-purple">Trees / Graphs</span>
+            <span class="tag tag-indigo">Dynamic Programming</span>
+            <span class="tag tag-gray">Sorting / Searching</span>
+            <span class="tag tag-gray">Greedy</span>
+            <span class="tag tag-gray">Backtracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">SK.DEV</div>
+  <div style="font-family:var(--mono);font-size:.7rem;color:var(--muted)">Always learning · Always building</div>
+  <button class="btn btn-ghost" style="font-size:.7rem;padding:.45rem 1rem" onclick="navigate('projects')">See My Projects →</button>
+</div>
