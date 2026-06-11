@@ -27,8 +27,8 @@ class AvatarEngine {
     wrap.id = 'avatar-img-wrap';
 
     const img = document.createElement('img');
-    img.src = 'assets/avatar_3d.png';
-    img.alt = 'Saksham Kotia – 3D Developer Avatar';
+    img.src = 'assets/avatar.jpg';
+    img.alt = 'Saksham Kotia – Developer Avatar';
     img.draggable = false;
     this._img = img;
     wrap.appendChild(img);
@@ -91,43 +91,43 @@ class AvatarEngine {
     c.classList.remove('mode-corner');
     c.classList.add('mode-hero');
 
-    let targetWidth = '560px';
-    let targetHeight = '640px';
-    let targetRight = '2%';
-    let targetLeft = 'auto';
+    let targetWidth = '520px';
+    let targetHeight = '600px';
+    let targetRight = 'auto';
+    let targetLeft = 'calc(50% + 20px)';
     let targetTop = '50%';
     let targetYPercent = -50;
     let targetXPercent = 0;
-    let targetBorderRadius = '24px';
+    let targetBorderRadius = '22px';
 
     const w = window.innerWidth;
     if (w <= 600) {
-      targetWidth = '180px';
-      targetHeight = '210px';
+      targetWidth = '165px';
+      targetHeight = '192px';
       targetLeft = '50%';
       targetRight = 'auto';
-      targetTop = '90px';
+      targetTop = 'calc(68px + 1rem)';
       targetYPercent = 0;
       targetXPercent = -50;
-      targetBorderRadius = '20px';
+      targetBorderRadius = '16px';
     } else if (w <= 950) {
-      targetWidth = '240px';
-      targetHeight = '275px';
+      targetWidth = '220px';
+      targetHeight = '255px';
       targetLeft = '50%';
       targetRight = 'auto';
-      targetTop = '95px';
+      targetTop = 'calc(68px + 1rem)';
       targetYPercent = 0;
       targetXPercent = -50;
-      targetBorderRadius = '20px';
+      targetBorderRadius = '18px';
     } else if (w <= 1250) {
-      targetWidth = '380px';
-      targetHeight = '440px';
-      targetRight = '2%';
-      targetLeft = 'auto';
+      targetWidth = '360px';
+      targetHeight = '420px';
+      targetRight = 'auto';
+      targetLeft = 'calc(50% + 40px)';
       targetTop = '50%';
       targetYPercent = -50;
       targetXPercent = 0;
-      targetBorderRadius = '24px';
+      targetBorderRadius = '22px';
     }
 
     if (window.gsap) {

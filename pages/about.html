@@ -2,41 +2,331 @@
      PAGE: ABOUT
 ═══════════════════════════════════ -->
 <style>
-#page-about { background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
-.about-hero { padding: 5rem 3rem 3rem; max-width: 1100px; margin: 0 auto; }
+#page-about {
+  background: linear-gradient(to bottom, var(--bg), var(--bg2));
+}
+
+.about-hero {
+  padding: 5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .about-grid {
-  display: grid; grid-template-columns: 1fr 1.45fr;
-  gap: 5rem; align-items: start; margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 4.5rem;
+  align-items: start;
+  margin-top: 2.5rem;
 }
-.about-float-cards {
-  position: absolute; right: -80px; top: 30%;
-  transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 1rem;
-}
-.about-details { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
-.about-p { color: var(--muted2); line-height: 1.88; margin-bottom: 1.25rem; font-size: 1rem; }
-.about-interests { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
 
-/* Edu */
-.edu-section { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
-.edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 1.5rem; margin-top: 2rem; }
-
-/* Soft skills / extras */
-.extras-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem; margin-top: 1.5rem; }
-.extra-card {
-  padding: 1.2rem 1.4rem; border-radius: 14px;
-  display: flex; flex-direction: column; gap: .5rem;
+.about-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
 }
-.extra-label { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.extra-val   { font-size: .9rem; color: var(--white); font-weight: 500; line-height: 1.55; }
 
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .about-float-cards { display: none; }
+/* Profile card design */
+.profile-card {
+  padding: 2.6rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 20px;
+  background: rgba(10, 18, 36, 0.4);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
 }
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.avatar-frame {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-placeholder-text {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--c2), var(--c1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-name {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.profile-role {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--c1);
+  margin: 0.3rem 0 0;
+  font-weight: 500;
+}
+
+/* Stats Grid */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.stat-card {
+  padding: 0.9rem 0.5rem;
+  text-align: center;
+  border-radius: 14px;
+  background: rgba(10, 18, 36, 0.3);
+  border: 1px solid var(--border);
+  transition: all 0.3s var(--spring);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.08);
+}
+
+.stat-card-icon {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.stat-card-val {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.stat-card-lbl {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.1rem;
+}
+
+/* Highlights Card */
+.highlights-card {
+  padding: 1.6rem 1.8rem;
+  border-radius: 16px;
+  background: rgba(10, 18, 36, 0.3);
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.highlight-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border2);
+  padding-bottom: 0.6rem;
+  font-size: 0.94rem;
+  align-items: center;
+}
+
+.highlight-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.highlight-key {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.highlight-val {
+  color: var(--white);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Focus areas tags container */
+.focus-areas-card {
+  padding: 1.6rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(10, 18, 36, 0.3);
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.focus-areas-title {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+/* Right side */
+.about-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bio-card {
+  padding: 2.8rem 2.5rem;
+  border-radius: 20px;
+  background: rgba(10, 18, 36, 0.4);
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.about-p {
+  color: var(--muted2);
+  line-height: 1.88;
+  margin-bottom: 1.6rem;
+  font-size: 1.12rem;
+}
+
+.about-p:last-of-type {
+  margin-bottom: 1.8rem;
+}
+
+/* Sub-sections grid */
+.subsection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.sub-card {
+  padding: 1.8rem;
+  border-radius: 16px;
+  background: rgba(10, 18, 36, 0.3);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s var(--spring);
+}
+
+.sub-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.05);
+}
+
+.sub-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.sub-card-meta {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  color: var(--c1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sub-card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 0.2rem;
+}
+
+.sub-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--muted2);
+  margin-top: 0.1rem;
+}
+
+.sub-card-desc {
+  font-size: 0.95rem;
+  color: var(--muted2);
+  line-height: 1.68;
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 950px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-sidebar {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .subsection-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 700px) {
-  .about-hero { padding: 4rem 1.5rem 2rem; }
-  .edu-section { padding: 0 1.5rem 4rem; }
+  .about-hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .bio-card {
+    padding: 1.5rem;
+  }
 }
 </style>
 
@@ -45,138 +335,212 @@
   <h1 class="h2 reveal" style="transition-delay:.05s">The Person <span class="grad">Behind the Code</span></h1>
 
   <div class="about-grid">
-    <!-- LEFT: Visual -->
-    <div class="reveal-left">
-      <div style="position:relative">
-        <div class="about-photo-frame">
-          <div class="about-photo-corner corner-tl"></div>
-          <div class="about-photo-corner corner-tr"></div>
-          <div class="about-photo-corner corner-bl"></div>
-          <div class="about-photo-corner corner-br"></div>
-          <div class="about-photo-inner">SK</div>
-        </div>
-        <div class="about-float-cards">
-          <div class="about-float-card">
-            <div class="afc-icon">🚀</div>
-            <div class="afc-val">5+</div>
-            <div class="afc-lbl">Projects</div>
-          </div>
-          <div class="about-float-card">
-            <div class="afc-icon">👥</div>
-            <div class="afc-val">60+</div>
-            <div class="afc-lbl">Led (NSS)</div>
-          </div>
-          <div class="about-float-card">
-            <div class="afc-icon">📍</div>
-            <div class="afc-val">GZB</div>
-            <div class="afc-lbl">India</div>
+    <!-- LEFT: Sidebar (Profile & Metadata) -->
+    <div class="about-sidebar reveal-left">
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <div class="avatar-frame">
+          <div class="avatar-inner">
+            <img class="about-img" src="../assets/avatar.jpg" alt="Saksham Kotia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <span class="about-placeholder-text">SK</span>
           </div>
         </div>
-      </div>
-      <div class="about-interests" style="margin-top:1.6rem">
-        <span class="interest-pill">🤖 AI Automation</span>
-        <span class="interest-pill">📅 Smart Scheduling</span>
-        <span class="interest-pill">🔐 Cybersecurity</span>
-        <span class="interest-pill">📊 Predictive Modeling</span>
-        <span class="interest-pill">🖥️ Full Stack</span>
-        <span class="interest-pill">👁️ Computer Vision</span>
-        <span class="interest-pill">🎙️ Public Speaking</span>
-        <span class="interest-pill">🌐 HCI</span>
-      </div>
-    </div>
-
-    <!-- RIGHT: Content -->
-    <div class="about-content reveal-right" style="transition-delay:.1s">
-      <div class="label">Bio</div>
-      <h2 class="h3" style="margin-bottom:1.2rem">Hey there, I'm <span class="grad">Saksham Kotia</span> 👋</h2>
-      <p class="about-p">
-        I'm a motivated B.Tech Computer Science student at Jaypee Institute of Information Technology (JIIT),
-        with a strong foundation in programming, data analysis, and system design. I'm skilled in C++, Python,
-        and SQL, with hands-on experience through academic projects in automation and AI-based solutions.
-      </p>
-      <p class="about-p">
-        Known for my problem-solving ability, attention to detail, and commitment to learning — I sit at the
-        intersection of engineering and design. Whether building a MERN Stack app, training a computer vision
-        model, or designing an optimisation algorithm, I bring the same energy and precision to everything.
-      </p>
-      <p class="about-p">
-        Beyond the screen: General Secretary at NSS, Core Committee Head at the Jaypee Youth Club, and
-        a passionate advocate for tech-driven social impact. Seeking to contribute my technical and
-        analytical skills to drive digital innovation.
-      </p>
-
-      <div class="about-details">
-        <div class="detail-row"><span class="detail-key">University</span><span class="detail-val">Jaypee Institute of IT (JIIT)</span></div>
-        <div class="detail-row"><span class="detail-key">Degree</span><span class="detail-val">B.Tech CSE</span></div>
-        <div class="detail-row"><span class="detail-key">Graduating</span><span class="detail-val">2026 (Pursuing)</span></div>
-        <div class="detail-row"><span class="detail-key">Location</span><span class="detail-val">Ghaziabad, NCR, India</span></div>
-        <div class="detail-row"><span class="detail-key">Phone</span><span class="detail-val">+91 88004 09904</span></div>
-        <div class="detail-row"><span class="detail-key">Status</span><span class="detail-val" style="color:#4ade80">● Open to Work</span></div>
+        <div class="profile-info">
+          <h2 class="profile-name">Saksham Kotia</h2>
+          <p class="profile-role">Full Stack &amp; AI Developer</p>
+        </div>
+        <!-- Social Row -->
+        <div class="hero-socials">
+          <a class="social-btn" href="https://linkedin.com/in/sakshamkotia" target="_blank" title="LinkedIn"><span>in</span></a>
+          <a class="social-btn" href="https://github.com/sakshamkotia" target="_blank" title="GitHub"><span>⌥</span></a>
+          <a class="social-btn" href="mailto:kotiasaksham@gmail.com" title="Email"><span>✉</span></a>
+          <a class="social-btn" href="tel:+918800409904" title="Phone"><span>✆</span></a>
+        </div>
       </div>
 
-      <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap">
-        <button class="btn btn-primary">Download Resume ↓</button>
-        <button class="btn btn-outline" onclick="navigate('contact')">Get in Touch →</button>
+      <!-- Stats Cards Grid -->
+      <div class="about-stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon">🚀</div>
+          <div class="stat-card-val">5+</div>
+          <div class="stat-card-lbl">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">👥</div>
+          <div class="stat-card-val">60+</div>
+          <div class="stat-card-lbl">Led (NSS)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">📍</div>
+          <div class="stat-card-val">GZB</div>
+          <div class="stat-card-lbl">India</div>
+        </div>
+      </div>
+
+      <!-- Highlights Card -->
+      <div class="highlights-card">
+        <div class="highlights-list">
+          <div class="highlight-row">
+            <span class="highlight-key">University</span>
+            <span class="highlight-val">JIIT, Noida</span>
+          </div>
+          <div class="highlight-row">
+            <span class="highlight-key">Degree</span>
+            <span class="highlight-val">B.Tech CSE</span>
+          </div>
+          <div class="highlight-row">
+            <span class="highlight-key">Graduating</span>
+            <span class="highlight-val">2026</span>
+          </div>
+          <div class="highlight-row">
+            <span class="highlight-key">Status</span>
+            <span class="highlight-val" style="color:#4ade80; font-weight:600;">● Open to Work</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capabilities Card -->
+      <div class="focus-areas-card">
+        <div class="focus-areas-title">Capabilities &amp; Speed</div>
+        <div style="font-size:0.8rem; color:var(--muted2); display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed var(--border2); padding-bottom:0.3rem;">
+            <span class="highlight-key">Typing</span>
+            <span style="color:var(--c1); font-weight:700;">55 WPM <span style="font-size:0.7rem; font-weight:normal; color:var(--muted)">(98% Acc)</span></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed var(--border2); padding-bottom:0.3rem;">
+            <span class="highlight-key">Languages</span>
+            <span style="color:var(--white); font-weight:500;">English, Hindi</span>
+          </div>
+          <div>
+            <span class="highlight-key" style="display:block; margin-bottom:0.2rem;">Soft Skills</span>
+            <span style="color:var(--white); font-size:0.75rem; line-height:1.4; display:block;">Leadership · Event Mgmt · Team Collaboration · Problem Solving</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus Areas Card -->
+      <div class="focus-areas-card">
+        <div class="focus-areas-title">Research &amp; Focus</div>
+        <div class="about-interests">
+          <span class="interest-pill">🤖 AI Automation</span>
+          <span class="interest-pill">📅 Smart Scheduling</span>
+          <span class="interest-pill">🔐 Cybersecurity</span>
+          <span class="interest-pill">📊 Predictive Modeling</span>
+          <span class="interest-pill">🖥️ Full Stack</span>
+          <span class="interest-pill">👁️ Computer Vision</span>
+          <span class="interest-pill">🎙️ Public Speaking</span>
+          <span class="interest-pill">🌐 HCI</span>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="divider" style="max-width:1100px;margin:0 auto"></div>
-
-<!-- EDUCATION -->
-<div class="edu-section">
-  <div class="label reveal">Education</div>
-  <h2 class="h3 reveal" style="transition-delay:.05s;margin-bottom:.3rem">Academic <span class="grad">Foundation</span></h2>
-
-  <div class="edu-grid stagger" style="margin-top:2rem">
-    <div class="card card-glow" style="padding:2rem;border-radius:18px">
-      <div class="edu-card-year">2022 – 2026 (Pursuing)</div>
-      <div class="edu-card-title">B.Tech — Computer Science &amp; Engineering</div>
-      <div class="edu-card-sub">Jaypee Institute of Information Technology (JIIT)</div>
-      <div class="edu-card-org">Noida, Uttar Pradesh</div>
-      <div class="courses-list" style="margin-top:1rem">
-        <span class="tag tag-cyan">DSA</span>
-        <span class="tag tag-purple">AI / ML</span>
-        <span class="tag tag-indigo">Computer Networks</span>
-        <span class="tag tag-gray">DBMS</span>
-        <span class="tag tag-pink">Cybersecurity</span>
-        <span class="tag tag-gray">System Design</span>
+    <!-- RIGHT: Content column -->
+    <div class="about-content-wrap reveal-right" style="transition-delay:.1s">
+      
+      <!-- Bio Card -->
+      <div class="bio-card">
+        <div class="label">Bio</div>
+        <h2 class="h3" style="margin-bottom:1.2rem">Hey there, I'm <span class="grad">Saksham Kotia</span> 👋</h2>
+        <p class="about-p">
+          I'm a motivated B.Tech Computer Science student at Jaypee Institute of Information Technology (JIIT),
+          with a strong foundation in programming, data analysis, and system design. I'm skilled in C++, Python,
+          and SQL, with hands-on experience through academic projects in automation and AI-based solutions.
+        </p>
+        <p class="about-p">
+          Known for my problem-solving ability, attention to detail, and commitment to learning — I sit at the
+          intersection of engineering and design. Whether building a MERN Stack app, training a computer vision
+          model, or designing an optimisation algorithm, I bring the same energy and precision to everything.
+        </p>
+        <p class="about-p">
+          Beyond the screen: General Secretary at NSS, Core Committee Head at the Jaypee Youth Club, and
+          a passionate advocate for tech-driven social impact. Seeking to contribute my technical and
+          analytical skills to drive digital innovation.
+        </p>
+        
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="openResumeModal()">View Resume 📄</button>
+          <button class="btn btn-outline" onclick="navigate('contact')">Get in Touch →</button>
+        </div>
       </div>
-    </div>
-    <div class="card card-glow" style="padding:2rem;border-radius:18px">
-      <div class="edu-card-year">Cleared 2023</div>
-      <div class="edu-card-title">Intermediate — PCM + Computer Science</div>
-      <div class="edu-card-sub">CBSE Board</div>
-      <div class="edu-card-org">Bal Bharati Public School, Brij Vihar — 201011</div>
-      <div class="courses-list" style="margin-top:1rem">
-        <span class="tag tag-cyan">Physics</span>
-        <span class="tag tag-purple">Mathematics</span>
-        <span class="tag tag-gray">Chemistry</span>
-        <span class="tag tag-gray">Python</span>
-        <span class="tag tag-gray">SQL</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- EXTRAS: Soft Skills, Languages, Interests -->
-  <div class="label reveal" style="margin-top:3.5rem">At a Glance</div>
-  <div class="extras-grid stagger">
-    <div class="card extra-card">
-      <div class="extra-label">🤝 Soft Skills</div>
-      <div class="extra-val">Leadership · Event Management · Team Collaboration · Communication · Time Management · Problem Solving · Adaptability</div>
-    </div>
-    <div class="card extra-card">
-      <div class="extra-label">🌐 Languages Known</div>
-      <div class="extra-val">English <span style="color:var(--muted);font-size:.82rem">(Professional Working Proficiency)</span><br>Hindi <span style="color:var(--muted);font-size:.82rem">(Native)</span></div>
-    </div>
-    <div class="card extra-card">
-      <div class="extra-label">⌨️ Typing Speed</div>
-      <div class="extra-val" style="font-family:var(--display);font-size:1.4rem;color:var(--c1)">55 WPM <span style="font-size:.8rem;color:var(--muted2);font-family:var(--font)">with 98% accuracy</span></div>
-    </div>
-    <div class="card extra-card">
-      <div class="extra-label">💡 Interests</div>
-      <div class="extra-val">Technology · Management · Public Speaking · Volunteering · Creative Design</div>
+      <!-- Education Grid -->
+      <div>
+        <div class="label" style="margin-bottom:0.4rem">Education</div>
+        <h3 class="h4" style="margin-bottom:1rem; font-family:var(--display); font-size:1.15rem; font-weight:700;">Academic <span class="grad">Foundation</span></h3>
+        <div class="subsection-grid">
+          <div class="sub-card">
+            <div>
+              <div class="sub-card-meta">2022 – 2026 (Pursuing)</div>
+              <div class="sub-card-title">B.Tech — Computer Science &amp; Engineering</div>
+              <div class="sub-card-subtitle">Jaypee Institute of Information Technology (JIIT)</div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:1rem">
+              <span class="tag tag-cyan" style="font-size:0.6rem;padding:0.2rem 0.5rem">DSA</span>
+              <span class="tag tag-purple" style="font-size:0.6rem;padding:0.2rem 0.5rem">AI / ML</span>
+              <span class="tag tag-indigo" style="font-size:0.6rem;padding:0.2rem 0.5rem">System Design</span>
+              <span class="tag tag-gray" style="font-size:0.6rem;padding:0.2rem 0.5rem">DBMS</span>
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div>
+              <div class="sub-card-meta">Cleared 2023</div>
+              <div class="sub-card-title">Intermediate — PCM + Computer Science</div>
+              <div class="sub-card-subtitle">Bal Bharati Public School, Brij Vihar</div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:1rem">
+              <span class="tag tag-cyan" style="font-size:0.6rem;padding:0.2rem 0.5rem">Physics</span>
+              <span class="tag tag-purple" style="font-size:0.6rem;padding:0.2rem 0.5rem">Mathematics</span>
+              <span class="tag tag-gray" style="font-size:0.6rem;padding:0.2rem 0.5rem">Python</span>
+              <span class="tag tag-gray" style="font-size:0.6rem;padding:0.2rem 0.5rem">SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leadership / Contributions -->
+      <div>
+        <div class="label" style="margin-bottom:0.4rem">Leadership &amp; Contributions</div>
+        <h3 class="h4" style="margin-bottom:1rem; font-family:var(--display); font-size:1.15rem; font-weight:700;">Positions of <span class="grad">Responsibility</span></h3>
+        <div style="display:flex; flex-direction:column; gap:1rem">
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div>
+                <div class="sub-card-meta">National Service Scheme (NSS) · JIIT</div>
+                <div class="sub-card-title">General Secretary</div>
+              </div>
+              <span class="tl-badge tl-badge-lead" style="font-size:0.62rem;padding:0.2rem 0.55rem">Leadership</span>
+            </div>
+            <div class="sub-card-desc">
+              Led 60+ volunteers in social initiatives, health campaigns, and tech literacy drives. Oversaw event coordination, progress tracking, and administrative relations.
+            </div>
+            <div style="display:flex;gap:.3rem;margin-top:0.8rem;flex-wrap:wrap">
+              <span class="tag tag-cyan" style="font-size:0.6rem;padding:0.2rem 0.5rem">Team Mgmt</span>
+              <span class="tag tag-purple" style="font-size:0.6rem;padding:0.2rem 0.5rem">Social Service</span>
+              <span class="tag tag-gray" style="font-size:0.6rem;padding:0.2rem 0.5rem">Outreach</span>
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div class="sub-card-header">
+              <div>
+                <div class="sub-card-meta">Jaypee Youth Club (JYC) · JIIT</div>
+                <div class="sub-card-title">Core Committee Head</div>
+              </div>
+              <span class="tl-badge tl-badge-vol" style="font-size:0.62rem;padding:0.2rem 0.55rem;background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2);color:rgb(216,180,254)">Management</span>
+            </div>
+            <div class="sub-card-desc">
+              Managed central event logistics, cross-departmental coordination, and on-ground execution for large university events with 500+ participants.
+            </div>
+            <div style="display:flex;gap:.3rem;margin-top:0.8rem;flex-wrap:wrap">
+              <span class="tag tag-purple" style="font-size:0.6rem;padding:0.2rem 0.5rem">Logistics</span>
+              <span class="tag tag-cyan" style="font-size:0.6rem;padding:0.2rem 0.5rem">Event Ops</span>
+              <span class="tag tag-gray" style="font-size:0.6rem;padding:0.2rem 0.5rem">Interpersonal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
