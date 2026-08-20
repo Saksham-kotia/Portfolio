@@ -44,7 +44,7 @@
 
 /* ── CONTAINER BASE ── */
 #avatar-container {
-  position: fixed;
+  position: absolute;
   z-index: 50;
   pointer-events: none;
   will-change: transform, width, height, opacity;
@@ -295,7 +295,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow: hidden;                 /* clip anything that overruns */
+  overflow: visible;                /* allow full text visibility */
 }
 
 /* Compact spacing — override inline margins */

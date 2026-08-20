@@ -39,7 +39,7 @@ window.navigate = function(pageId) {
       newEl.classList.add('active');
       requestAnimationFrame(() => {
         newEl.classList.remove('enter-up');
-        newEl.scrollTop = 0;
+        window.scrollTo(0, 0);
       });
     });
 
@@ -67,28 +67,17 @@ function updateNav(pageId) {
 
 
 /* ─── NAVBAR SCROLL ──────────────────────── */
-document.querySelectorAll('.page').forEach(page => {
-  page.addEventListener('scroll', () => {
-    if (!page.classList.contains('active')) return;
-    document.getElementById('nav').classList.toggle('scrolled', page.scrollTop > 30);
-    const pct = page.scrollTop / (page.scrollHeight - page.clientHeight);
-    document.getElementById('scroll-progress').style.width = (pct * 100) + '%';
+window.addEventListener('scroll', () => {
+  const page = document.getElementById('page-' + currentPage);
+  if (!page) return;
+  const st = window.scrollY;
+  document.getElementById('nav').classList.toggle('scrolled', st > 30);
+  
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollHeight > 0 ? st / scrollHeight : 0;
+  document.getElementById('scroll-progress').style.width = (pct * 100) + '%';
 
-    // Fade out hero avatar on scroll down (mobile/tablet stacked view)
-    if (page.id === 'page-home') {
-      const avatar = document.getElementById('avatar-container');
-      if (avatar && avatar.classList.contains('mode-hero')) {
-        if (window.innerWidth <= 950) {
-          const opacity = Math.max(0, 1 - page.scrollTop / 200);
-          avatar.style.opacity = opacity;
-          avatar.style.pointerEvents = opacity < 0.1 ? 'none' : 'all';
-        } else {
-          avatar.style.opacity = '';
-          avatar.style.pointerEvents = '';
-        }
-      }
-    }
-  });
+    // Avatar is now position: absolute, so it scrolls naturally with the document.
 });
 
 

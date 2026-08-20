@@ -191,17 +191,15 @@
           margin-bottom: .3rem;
         }
 
-        /* ── Main name — SINGLE LINE, constrained font size ── */
+        /* ── Main name — SINGLE LINE, responsive font size to fit full name ── */
         .hero-name-main {
           display: block;
           animation: fadeInUp .8s var(--ease) .35s both;
-          /* Tighter clamp to prevent overflow into avatar zone */
-          font-size: clamp(2.4rem, 6.2vw, 4.6rem) !important;
+          font-size: clamp(1.8rem, 3.8vw, 3.4rem) !important;
           white-space: nowrap;          /* force one line */
           letter-spacing: -.015em;
           line-height: 1.05;
-          overflow: hidden;
-          text-overflow: clip;
+          overflow: visible;
         }
 
         /* ── Role bar ── */
@@ -1091,8 +1089,8 @@
             <div class="proj-meta">
               <div class="proj-year">AI · Speech <span class="tl-badge tl-badge-lead" style="vertical-align:middle">Featured</span></div>
               <div class="proj-links">
-                <a href="#" class="proj-link">GH</a>
-                <a href="#" class="proj-link">↗</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">GH</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">↗</a>
               </div>
             </div>
           </div>
@@ -1121,8 +1119,8 @@
             <div class="proj-meta">
               <div class="proj-year">CV · Python <span class="tl-badge tl-badge-lead" style="vertical-align:middle">Featured</span></div>
               <div class="proj-links">
-                <a href="#" class="proj-link">GH</a>
-                <a href="#" class="proj-link">↗</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">GH</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">↗</a>
               </div>
             </div>
           </div>
@@ -1149,8 +1147,8 @@
             <div class="proj-meta">
               <div class="proj-year">Web · MERN</div>
               <div class="proj-links">
-                <a href="#" class="proj-link">GH</a>
-                <a href="#" class="proj-link">↗</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">GH</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">↗</a>
               </div>
             </div>
           </div>
@@ -1177,7 +1175,7 @@
             <div class="proj-meta">
               <div class="proj-year">Security · Python</div>
               <div class="proj-links">
-                <a href="#" class="proj-link">GH</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">GH</a>
               </div>
             </div>
           </div>
@@ -1203,7 +1201,7 @@
             <div class="proj-meta">
               <div class="proj-year">AI / Optimisation</div>
               <div class="proj-links">
-                <a href="#" class="proj-link">GH</a>
+                <a href="https://github.com/sakshamkotia" target="_blank" class="proj-link">GH</a>
               </div>
             </div>
           </div>
@@ -2245,7 +2243,7 @@
       <div class="modal-body">
         <div class="resume-pages-container">
           <div class="resume-page-wrapper">
-            <img src="assets/resume-page1.png" alt="Resume Page 1" class="resume-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <img src="assets/resume-page1.png" alt="Resume Page 1" class="resume-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';" />
             <div class="resume-fallback-card">
               <div class="fallback-icon">📄</div>
               <div class="fallback-title">Resume Page 1</div>
@@ -2253,7 +2251,7 @@
             </div>
           </div>
           <div class="resume-page-wrapper">
-            <img src="assets/resume-page2.png" alt="Resume Page 2" class="resume-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <img src="assets/resume-page2.png" alt="Resume Page 2" class="resume-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';" />
             <div class="resume-fallback-card">
               <div class="fallback-icon">📄</div>
               <div class="fallback-title">Resume Page 2</div>

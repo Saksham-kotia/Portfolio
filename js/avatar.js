@@ -95,7 +95,7 @@ class AvatarEngine {
     let targetHeight = '600px';
     let targetRight = 'auto';
     let targetLeft = 'calc(50% + 20px)';
-    let targetTop = '50%';
+    let targetTop = '50vh';
     let targetYPercent = -50;
     let targetXPercent = 0;
     let targetBorderRadius = '22px';
@@ -124,7 +124,7 @@ class AvatarEngine {
       targetHeight = '420px';
       targetRight = 'auto';
       targetLeft = 'calc(50% + 40px)';
-      targetTop = '50%';
+      targetTop = '50vh';
       targetYPercent = -50;
       targetXPercent = 0;
       targetBorderRadius = '22px';
